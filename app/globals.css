@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit);
+
+  --color-bg: #f2f1f0;
+  --color-primary: #232323;
+  --color-secondary: #363636;
+  --color-border: #bbbdbc;
+  --color-teal: #235f72;
+  --color-brown: #723e21;
+  --color-navy: #1b2d4f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+  --case-accent controls heading color for each case study.
+  Set it once on a container and every text-h* heading inside
+  inherits that color automatically. Defaults to primary text.
+*/
+:root {
+  --case-accent: var(--color-primary);
+}
+
+@layer components {
+  /* ─── Headings ─────────────────────────────────────────────────────── */
+  /* Sentence case, no text-transform, letter-spacing 0 */
+
+  .text-h1 {
+    font-size: 70px;
+    line-height: 88.2px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--case-accent);
   }
+
+  .text-h2 {
+    font-size: 58px;
+    line-height: 73.1px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--case-accent);
+  }
+
+  .text-h3 {
+    font-size: 52px;
+    line-height: 65.5px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    color: var(--case-accent);
+  }
+
+  .text-h4 {
+    font-size: 44px;
+    line-height: 55.4px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--case-accent);
+  }
+
+  .text-h5 {
+    font-size: 32px;
+    line-height: 40.3px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--case-accent);
+  }
+
+  .text-h6 {
+    font-size: 28px;
+    line-height: 37px;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--case-accent);
+  }
+
+  /* ─── Body ─────────────────────────────────────────────────────────── */
+
+  .text-body {
+    font-size: 18px;
+    line-height: 32.8px;
+    font-weight: 300;
+  }
+
+  /* ─── Labels ────────────────────────────────────────────────────────── */
+  /* Normal case, regular weight, letter-spacing 0 */
+
+  .text-label-l1 {
+    font-size: 22px;
+    line-height: 27.7px;
+    font-weight: 400;
+    letter-spacing: 0em;
+  }
+
+  .text-label-l2 {
+    font-size: 18px;
+    line-height: 23.6px;
+    font-weight: 400;
+    letter-spacing: 0em;
+  }
+
+  .text-label-l3 {
+    font-size: 15.6px;
+    line-height: 19.7px;
+    font-weight: 400;
+    letter-spacing: 0em;
+  }
+
+  /* ─── Eyebrow ───────────────────────────────────────────────────────── */
+  /* Section labels: uppercase, letter-spacing 18% */
+
+  .text-eyebrow {
+    font-size: 16px;
+    line-height: 20.2px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* ─── Button text style ────────────────────────────────────────────── */
+
+  .text-button {
+    font-size: 21.9px;
+    line-height: 32.8px;
+    font-weight: 400;
+  }
+
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
 }

@@ -1,0 +1,31 @@
+<svg width="290" height="405" viewBox="0 0 290 405" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_107_2961)">
+<rect width="290" height="405" fill="#F2F1F0"/>
+<rect x="51" y="36" width="81" height="32.25" rx="3.75" fill="#C0C0C0"/>
+<rect x="51" y="79.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="123" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="166.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="210" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="253.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="297" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="51" y="340.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="36" width="81" height="32.25" rx="3.75" fill="#C0C0C0"/>
+<rect x="158" y="79.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="123" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="166.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="210" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="253.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="297" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="158" y="340.5" width="81" height="32.25" rx="3.75" fill="#D9D9D9"/>
+<rect x="-81" y="273.75" width="453" height="131" fill="url(#paint0_linear_107_2961)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_107_2961" x1="145.5" y1="273.75" x2="145.5" y2="404.75" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F2F1F0" stop-opacity="0"/>
+<stop offset="0.705507" stop-color="#F2F1F0"/>
+</linearGradient>
+<clipPath id="clip0_107_2961">
+<rect width="290" height="405" fill="white"/>
+</clipPath>
+</defs>
+</svg>
