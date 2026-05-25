@@ -1,13 +1,14 @@
 type Props = {
   children: React.ReactNode;
   color?: string;
+  textColor?: string;
   href?: string;
 };
 
-export default function Button({ children, color = "#1B2D4F", href }: Props) {
-  // Derive a safe CSS class name from the hex color so multiple Button
-  // instances with different colors each get their own scoped rules.
-  const id = `btn-${color.replace(/[^a-zA-Z0-9]/g, "")}`;
+export default function Button({ children, color = "#1B2D4F", textColor, href }: Props) {
+  const resolvedTextColor = textColor ?? color;
+  // Include both color values in the id so different textColor+color combos get unique class names.
+  const id = `btn-${color.replace(/[^a-zA-Z0-9]/g, "")}-${resolvedTextColor.replace(/[^a-zA-Z0-9]/g, "")}`;
 
   const css = `
     .${id}-front {
@@ -15,10 +16,10 @@ export default function Button({ children, color = "#1B2D4F", href }: Props) {
       position: relative;
       z-index: 10;
       background-color: white;
-      border: 2px solid ${color};
+      border: 2px solid #232323;
       border-radius: 8px;
       padding: 10px 30px;
-      color: ${color};
+      color: ${resolvedTextColor};
       font-size: 21.9px;
       line-height: 32.8px;
       font-weight: 400;

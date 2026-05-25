@@ -1,8 +1,8 @@
 const TOOLS = [
-  { name: "Figma",       src: "/sample-csi/figma.svg" },
-  { name: "ChatGPT",     src: "/sample-csi/chatgpt.svg" },
-  { name: "Claude Code", src: "/sample-csi/claude.svg" },
-  { name: "Granola",     src: "/sample-csi/granola.svg" },
+  { name: "Figma",       src: "/figma.svg" },
+  { name: "ChatGPT",     src: "/chatgpt.svg" },
+  { name: "Claude Code", src: "/claude.svg" },
+  { name: "Granola",     src: "/granola.svg" },
 ];
 
 type Props = {

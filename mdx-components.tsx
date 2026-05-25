@@ -12,6 +12,9 @@ import BeforeAfter from "@/components/BeforeAfter";
 import RefinementBlock from "@/components/RefinementBlock";
 import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseVideo from "@/components/CaseVideo";
+import DesignChallenge from "@/components/DesignChallenge";
+import GroupedPoints from "@/components/GroupedPoints";
+import FeatureScreenshot from "@/components/FeatureScreenshot";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -36,5 +39,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RefinementBlock,
     OutcomeBanner,
     CaseVideo,
+    DesignChallenge,
+    GroupedPoints,
+    FeatureScreenshot,
   };
 }

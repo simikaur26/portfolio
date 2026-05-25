@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-const sections = [
-  { id: "the-problem", label: "THE PROBLEM" },
-  { id: "constraints", label: "CONSTRAINTS" },
-  { id: "key-design-decision-1", label: "KEY DESIGN DECISION 1" },
-  { id: "key-design-decision-2", label: "KEY DESIGN DECISION 2" },
-  { id: "key-design-decision-3", label: "KEY DESIGN DECISION 3" },
-  { id: "final-outcome", label: "FINAL OUTCOME" },
-  { id: "using-ai", label: "USING AI" },
-  { id: "reflection", label: "REFLECTION" },
-];
+export type NavSection = { id: string; label: string };
 
-export default function CaseStudyNav() {
+type Props = {
+  sections: NavSection[];
+};
+
+export default function CaseStudyNav({ sections }: Props) {
   const [visibleIds, setVisibleIds] = useState<Set<string>>(new Set());
   // Start hidden; becomes false once the hero has fully left the viewport.
   const [heroInView, setHeroInView] = useState(true);
@@ -55,7 +50,7 @@ export default function CaseStudyNav() {
       sectionObserver.disconnect();
       heroObserver.disconnect();
     };
-  }, []);
+  }, [sections]);
 
   const activeId = sections.find(({ id }) => visibleIds.has(id))?.id ?? "";
 
@@ -91,7 +86,7 @@ export default function CaseStudyNav() {
                 height: isActive ? "18px" : "6px",
                 borderRadius: isActive ? "1px" : "3px",
                 backgroundColor: isActive
-                  ? "var(--color-navy)"
+                  ? "var(--case-accent)"
                   : "rgba(54,54,54,0.3)",
                 transition:
                   "width 200ms ease, height 200ms ease, border-radius 200ms ease, background-color 200ms ease",
@@ -103,7 +98,7 @@ export default function CaseStudyNav() {
                 lineHeight: "1.3",
                 letterSpacing: "0.08em",
                 maxWidth: "100px",
-                color: isActive ? "var(--color-navy)" : "rgba(54,54,54,0.45)",
+                color: isActive ? "var(--case-accent)" : "rgba(54,54,54,0.45)",
                 fontWeight: isActive ? 600 : 400,
                 transition: "color 200ms ease, font-weight 200ms ease",
               }}

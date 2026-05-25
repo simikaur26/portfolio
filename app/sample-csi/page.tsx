@@ -242,11 +242,11 @@ export default function SampleCSI() {
             </p>
             <div className="mt-10 flex justify-center gap-12 items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/sample-csi/chatgpt.svg" alt="ChatGPT" width={60} height={60} />
+              <img src="/chatgpt.svg" alt="ChatGPT" width={60} height={60} />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/sample-csi/claude.svg" alt="Claude" width={60} height={60} />
+              <img src="/claude.svg" alt="Claude" width={60} height={60} />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/sample-csi/granola.svg" alt="Granola" width={60} height={60} />
+              <img src="/granola.svg" alt="Granola" width={60} height={60} />
             </div>
             <p className="text-body mt-10">
               We used ChatGPT for broad brainstorming and quick iteration. Claude was better for longer, more structured tasks — things where we needed it to hold a lot of context at once. Granola handled meeting notes and kept our synthesis sessions from disappearing into a folder no one opened again.
@@ -285,7 +285,16 @@ export default function SampleCSI() {
           </h4>
         </div>
       </main>
-      <CaseStudyNav />
+      <CaseStudyNav sections={[
+        { id: "the-problem",          label: "THE PROBLEM" },
+        { id: "constraints",          label: "CONSTRAINTS" },
+        { id: "key-design-decision-1", label: "KEY DESIGN DECISION 1" },
+        { id: "key-design-decision-2", label: "KEY DESIGN DECISION 2" },
+        { id: "key-design-decision-3", label: "KEY DESIGN DECISION 3" },
+        { id: "final-outcome",        label: "FINAL OUTCOME" },
+        { id: "using-ai",             label: "USING AI" },
+        { id: "reflection",           label: "REFLECTION" },
+      ]} />
     </div>
   );
 }

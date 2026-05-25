@@ -25,7 +25,7 @@ export default function OutcomeBanner({
       {/* Front card — static, no hover/focus */}
       <div
         className="relative z-10 w-full rounded-[8px] p-4 text-center"
-        style={{ backgroundColor: "#F2F1F0", border: `2px solid ${color}` }}
+        style={{ backgroundColor: "#F2F1F0", border: "2px solid #232323" }}
       >
         <p className="text-eyebrow text-secondary">{eyebrow}</p>
         <h5 className="text-h5 mt-3">{heading}</h5>
