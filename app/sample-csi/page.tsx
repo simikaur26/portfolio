@@ -10,18 +10,21 @@ import ThreeUp from "@/components/ThreeUp";
 import CaseVideo from "@/components/CaseVideo";
 import RefinementBlock from "@/components/RefinementBlock";
 import OutcomeBanner from "@/components/OutcomeBanner";
+import CaseStudyNav from "@/components/CaseStudyNav";
 
 export default function SampleCSI() {
   return (
     <div
       style={{ "--case-accent": "var(--color-navy)" } as React.CSSProperties}
     >
-      <Hero
-        title="Designing Digital Evidence Collection for the Real World"
-        href="#"
-        leftSrc="/sample-csi/hero-left.png"
-        rightSrc="/sample-csi/hero-right.png"
-      />
+      <div id="hero">
+        <Hero
+          title="Designing Digital Evidence Collection for the Real World"
+          href="#"
+          leftSrc="/sample-csi/hero-left.png"
+          rightSrc="/sample-csi/hero-right.png"
+        />
+      </div>
 
       <main className="py-20 px-16">
         <div className="max-w-[930px] mx-auto">
@@ -38,7 +41,7 @@ export default function SampleCSI() {
             height={744}
           />
 
-          <div className="mt-20">
+          <div id="the-problem" className="mt-20">
             <SectionHeader
               eyebrow="THE PROBLEM"
               heading="The problem wasn't digitizing paperwork. It was preserving trust."
@@ -58,7 +61,7 @@ export default function SampleCSI() {
             </div>
           </div>
 
-          <div className="mt-20">
+          <div id="constraints" className="mt-20">
             <SectionHeader
               eyebrow="CONSTRAINTS"
               heading="Designing for inconsistency became the hardest constraint."
@@ -86,7 +89,7 @@ export default function SampleCSI() {
             />
           </div>
 
-          <div className="mt-20">
+          <div id="key-design-decision-1" className="mt-20">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 1"
               heading="AI as guardrails, not automation"
@@ -109,7 +112,7 @@ export default function SampleCSI() {
             <CaseVideo src="/sample-csi/ai-feature.mp4" />
           </div>
 
-          <div className="mt-20">
+          <div id="key-design-decision-2" className="mt-20">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 2"
               heading="The biggest pivot came from something we didn't hear in interviews"
@@ -148,7 +151,7 @@ export default function SampleCSI() {
             />
           </div>
 
-          <div className="mt-20">
+          <div id="key-design-decision-3" className="mt-20">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 3"
               heading="Usability testing exposed where clarity mattered more than features"
@@ -213,7 +216,7 @@ export default function SampleCSI() {
             </p>
             <CaseVideo src="/sample-csi/final-outcome.mp4" />
           </div>
-          <div className="mt-20">
+          <div id="using-ai" className="mt-20">
             <SectionHeader
               eyebrow="USING AI"
               heading="AI also became part of how we built SampleCSI"
@@ -262,7 +265,7 @@ export default function SampleCSI() {
             </EmphasisLine>
             <CaseVideo src="/sample-csi/research-overview.mp4" />
           </div>
-          <div className="mt-20">
+          <div id="reflection" className="mt-20">
             <SectionHeader
               eyebrow="REFLECTION"
               heading="I learned that workflow design isn't really about screens"
@@ -282,6 +285,7 @@ export default function SampleCSI() {
           </h4>
         </div>
       </main>
+      <CaseStudyNav />
     </div>
   );
 }
