@@ -25,6 +25,7 @@ body {
 */
 :root {
   --case-accent: var(--color-primary);
+  --nav-height: 82px;
 }
 
 @layer components {

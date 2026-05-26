@@ -28,7 +28,10 @@ export default function Hero({
       lives outside the centered max-w-5xl column in page.tsx. No negative
       margins needed — the section is naturally full-bleed.
     */
-    <section className="relative w-full overflow-hidden h-screen">
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ height: "calc(100vh - var(--nav-height))" }}
+    >
       {/* Centered content — banner and links stay in a readable column */}
       <div className="relative z-10 flex flex-col items-center gap-6 pt-20 px-16">
         {/* Optional logo above the banner */}
