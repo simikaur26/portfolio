@@ -130,7 +130,15 @@ const POPUP_SPRING = {
 
 // ── Simple (non-identity) reveal section ───────────────────────────────────
 
-function RevealSection({ children }: { children: React.ReactNode }) {
+function RevealSection({
+  children,
+  style,
+  showBottomFade,
+}: {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  showBottomFade?: boolean;
+}) {
   const ref = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
   const hasEntered = useInView(ref, { once: true, amount: 0.18 });
@@ -138,7 +146,8 @@ function RevealSection({ children }: { children: React.ReactNode }) {
   return (
     <section
       ref={ref}
-      className="h-screen flex items-center px-16"
+      className="flex items-center px-16 relative"
+      style={{ height: "calc(100vh - var(--nav-height))", scrollSnapAlign: "start", ...style }}
     >
       <motion.div
         className="max-w-[930px] mx-auto w-full"
@@ -148,6 +157,23 @@ function RevealSection({ children }: { children: React.ReactNode }) {
       >
         {children}
       </motion.div>
+
+      {/* Gradient that bleeds below the section to softly dim the peeking work cards */}
+      {showBottomFade && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: -80,
+            left: 0,
+            right: 0,
+            height: 160,
+            background: "linear-gradient(to bottom, transparent, rgba(242,241,240,0.72))",
+            pointerEvents: "none",
+            zIndex: 10,
+          }}
+        />
+      )}
     </section>
   );
 }
@@ -177,7 +203,8 @@ function IdentitySection({
   return (
     <section
       ref={ref}
-      className="h-screen flex items-center px-16"
+      className="flex items-center px-16"
+      style={{ height: "calc(100vh - var(--nav-height))", scrollSnapAlign: "start" }}
     >
       <motion.div
         className="max-w-[930px] mx-auto w-full"
@@ -243,9 +270,21 @@ function IdentitySection({
 
 // ── Main export ─────────────────────────────────────────────────────────────
 
-export default function HomeIntro() {
+export default function HomeIntro({ onSkip }: { onSkip?: () => void } = {}) {
   return (
-    <>
+    /*
+      Scroll-snap container: height = viewport minus nav, overflow-y scroll.
+      All 6 sections scroll internally so the window scroll position stays at 0
+      throughout the entire intro. Navigating to a case study always starts at
+      the top with no scroll-reset tricks needed.
+    */
+    <div
+      style={{
+        height: "calc(100vh - var(--nav-height))",
+        overflowY: "scroll",
+        scrollSnapType: "y mandatory",
+      }}
+    >
       {/* Section 1 — Intro */}
       <RevealSection>
         <h1 className="text-h1">hey! i&apos;m simi,</h1>
@@ -274,6 +313,7 @@ export default function HomeIntro() {
             }}
             onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = "#232323")}
             onMouseLeave={(e) => (e.currentTarget.style.borderBottomColor = "transparent")}
+            onClick={() => onSkip?.()}
           >
             skip to my work →
           </a>
@@ -321,6 +361,6 @@ export default function HomeIntro() {
           <strong>here&apos;s the work.</strong>
         </h3>
       </RevealSection>
-    </>
+    </div>
   );
 }

@@ -20,7 +20,7 @@ export default function SampleCSI() {
       <div id="hero">
         <Hero
           title="Designing Digital Evidence Collection for the Real World"
-          href="#"
+          href="https://amulyavw02.github.io/samplecsi/"
           leftSrc="/sample-csi/hero-left.png"
           rightSrc="/sample-csi/hero-right.png"
         />

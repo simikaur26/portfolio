@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     // when source files change between dev server restarts. Disabling it ensures
     // CSS and component changes are always picked up on next dev.
     turbopackFileSystemCacheForDev: false,
+    scrollRestoration: false,
   },
 };
 

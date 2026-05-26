@@ -28,8 +28,6 @@ export default function CompareFormulas() {
       <div id="hero">
         <Hero
           title="Compare Formulas: Rebuilding a Workflow for ElementAI"
-          href="#"
-          linkText="View live prototype"
           logoSrc="/compare-formulas/pml-logo.svg"
           logoWidth={186}
           logoHeight={53}

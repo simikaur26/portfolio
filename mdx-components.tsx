@@ -15,6 +15,7 @@ import CaseVideo from "@/components/CaseVideo";
 import DesignChallenge from "@/components/DesignChallenge";
 import GroupedPoints from "@/components/GroupedPoints";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
+import CaseStudyCard from "@/components/CaseStudyCard";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -42,5 +43,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DesignChallenge,
     GroupedPoints,
     FeatureScreenshot,
+    CaseStudyCard,
   };
 }
