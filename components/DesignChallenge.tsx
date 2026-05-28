@@ -19,7 +19,7 @@ export default function DesignChallenge({ iconSrc, children }: Props) {
         className="relative z-10 w-full rounded-[8px]"
         style={{
           backgroundColor: "#F2F1F0",
-          border: "2px solid var(--case-accent)",
+          border: "2px solid #232323",
           padding: "40px 50px",
         }}
       >

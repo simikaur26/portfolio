@@ -5,7 +5,7 @@ type Props = {
   href?: string;
 };
 
-export default function Button({ children, color = "#1B2D4F", textColor, href }: Props) {
+export default function Button({ children, color = "var(--case-accent)", textColor, href }: Props) {
   const resolvedTextColor = textColor ?? color;
   // Include both color values in the id so different textColor+color combos get unique class names.
   const id = `btn-${color.replace(/[^a-zA-Z0-9]/g, "")}-${resolvedTextColor.replace(/[^a-zA-Z0-9]/g, "")}`;

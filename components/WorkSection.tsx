@@ -25,6 +25,15 @@ export default function WorkSection() {
             imageAlt="Compare Formulas case study preview"
             href="/compare-formulas"
           />
+          <CaseStudyCard
+            company="ACORNS"
+            heading="Building trust during customer suspensions"
+            description="Redesigned Acorns' suspension-resolution experience to reduce customer anxiety, guide users through verification more clearly, and rebuild trust during high-stress account lockouts."
+            accentColor="#6EC739"
+            imageSrc="/homepage/acornscard.svg"
+            imageAlt="Acorns case study preview"
+            href="/acorns"
+          />
         </div>
       </div>
     </section>

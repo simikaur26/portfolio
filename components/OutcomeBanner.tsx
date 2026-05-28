@@ -7,7 +7,7 @@ type Props = {
 export default function OutcomeBanner({
   heading,
   eyebrow = "FINAL OUTCOME",
-  color = "#1B2D4F",
+  color = "var(--case-accent)",
 }: Props) {
   return (
     /*

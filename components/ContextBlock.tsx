@@ -1,18 +1,22 @@
-const TOOLS = [
+const DEFAULT_TOOLS = [
   { name: "Figma",       src: "/figma.svg" },
   { name: "ChatGPT",     src: "/chatgpt.svg" },
   { name: "Claude Code", src: "/claude.svg" },
   { name: "Granola",     src: "/granola.svg" },
 ];
 
+type Tool = { name: string; src: string };
+
 type Props = {
   timeline: string;
   role: string;
   team: string;
   overview: string;
+  tools?: Tool[];
 };
 
-export default function ContextBlock({ timeline, role, team, overview }: Props) {
+export default function ContextBlock({ timeline, role, team, overview, tools }: Props) {
+  const TOOLS = tools ?? DEFAULT_TOOLS;
   return (
     <div>
       <p className="text-eyebrow text-secondary">Context</p>

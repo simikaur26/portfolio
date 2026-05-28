@@ -228,7 +228,6 @@ I was the solo product designer, working with one PM and two engineers. I owned 
           <div id="final-outcome" className="mt-20 scroll-mt-12">
             <OutcomeBanner
               heading="The final design turned a static report into a clearer, more actionable workspace."
-              color="var(--case-accent)"
             />
             <p className="text-body mt-8">
               Compare Formulas has been built and users are beginning to use it in Element AI.

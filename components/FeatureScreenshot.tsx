@@ -32,13 +32,7 @@ export default function FeatureScreenshot({ blocks }: Props) {
           </div>
 
           {/* Right: 2/3 — screenshot with container shadow + radius */}
-          <div
-            className="md:col-span-2 overflow-hidden"
-            style={{
-              borderRadius: "14px",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-            }}
-          >
+          <div className="md:col-span-2 overflow-hidden" style={{ borderRadius: "14px" }}>
             <Image
               src={block.imageSrc}
               alt={block.imageAlt}

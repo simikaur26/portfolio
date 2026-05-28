@@ -16,6 +16,7 @@ body {
   --color-brown: #723e21;
   --color-navy: #1b2d4f;
   --color-blue: #6494ce;
+  --color-acorns: #6ec739;
 }
 
 /*
@@ -26,6 +27,9 @@ body {
 :root {
   --case-accent: var(--color-primary);
   --nav-height: 82px;
+  --color-navy: #1B2D4F;
+  --color-blue: #6494CE;
+  --color-acorns: #6EC739;
 }
 
 @layer components {

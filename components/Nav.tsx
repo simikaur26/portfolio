@@ -34,13 +34,13 @@ export default function Nav() {
           >
             Work
           </a>
-          <a
-            href="#"
+          <Link
+            href="/about"
             className="text-label-l2 hover:opacity-60 transition-opacity duration-150"
             style={{ color: "#232323", textDecoration: "none" }}
           >
             About Me
-          </a>
+          </Link>
           <a
             href="#"
             className="text-label-l2 hover:opacity-60 transition-opacity duration-150"
