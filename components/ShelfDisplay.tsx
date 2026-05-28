@@ -140,7 +140,7 @@ const SHELVES: [ItemData, ItemData][] = [
       w: 60,
       h: 45,
       link: { href: "/photography", text: "see my photography →" },
-      photo: "/about/photography/photo18.jpg",
+      photo: "/about/photography/photo18.JPG",
     },
     {
       id: "sk-mark",

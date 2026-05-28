@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-const PHOTOS = Array.from({ length: 36 }, (_, i) => i + 1);
+const UPPERCASE_EXT = new Set([1, 2, 3, 18, 20, 21]);
+
+function photoSrc(n: number) {
+  return `/about/photography/photo${n}.${UPPERCASE_EXT.has(n) ? "JPG" : "jpg"}`;
+}
 
 export default function Photography() {
   return (
@@ -14,10 +18,10 @@ export default function Photography() {
           className="mt-8 columns-1 min-[640px]:columns-2 min-[900px]:columns-3"
           style={{ columnGap: 16 }}
         >
-          {PHOTOS.map((n) => (
+          {Array.from({ length: 36 }, (_, i) => i + 1).map((n) => (
             <div key={n} style={{ breakInside: "avoid", marginBottom: 16 }}>
               <Image
-                src={`/about/photography/photo${n}.jpg`}
+                src={photoSrc(n)}
                 alt=""
                 width={800}
                 height={600}
