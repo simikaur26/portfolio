@@ -135,7 +135,7 @@ const SHELVES: [ItemData, ItemData][] = [
     {
       id: "camera",
       label: "framing stories",
-      body: "I've been taking photos since I was a teenager. Photography taught me how to notice light, composition, and the moment before something happens. That instinct for framing — knowing what to include and what to leave out — shows up in everything I design.",
+      body: "I started taking photos when I was in high school. I would force my friends to go on photoshoots so I could practice portrait photography. It quickly turned into a business, and I continued all throughout college. I loved the feeling of showing my clients the photos and them feeling so good about themselves! Now I just take photos for fun! I love capturing a story, a beautiful moment, or a pretty thing :)",
       Component: CameraObject,
       w: 60,
       h: 45,
@@ -145,7 +145,7 @@ const SHELVES: [ItemData, ItemData][] = [
     {
       id: "sk-mark",
       label: "building systems",
-      body: "I've built Lego sets my whole life. There's something deeply satisfying about how every piece has exactly one right fit, and how complex things emerge from simple, repeatable parts. I think about design the same way — modular, intentional, and built to last.",
+      body: "I was in a lego league in middle school, and recently got back into building lego sets. It's so fun starting and building a set brick by brick. Legos really put into perspective how complex things come from simple, repeatable parts... and they work as great home decor pieces!",
       Component: LogoObject,
       w: 80,
       h: 80,
@@ -155,7 +155,7 @@ const SHELVES: [ItemData, ItemData][] = [
     {
       id: "bread",
       label: "made with time",
-      body: "Baking bread is one of my favorite things. I love the process, the waiting, the folding, the watching it come together over a few days. When people eat it and enjoy it, that's the whole point. And when it doesn't work out, it's just a fun problem to solve.",
+      body: "I love baking bread. It's something I saw on TikTok and knew I immediately had to try. Baking bread definitely taught me how to be patient, especially when things go wrong (like when your starter doesn't rise). I love baking bread for my friends and family!",
       Component: BreadObject,
       w: 70,
       h: 50,
@@ -173,15 +173,15 @@ const SHELVES: [ItemData, ItemData][] = [
     {
       id: "menu",
       label: "people, service, details",
-      body: "I'm a 1/5 owner of Anand, an Indian restaurant my family is building in Fargo. Running a restaurant taught me that great service is really great design — you're orchestrating a hundred small details so people feel taken care of without noticing the work.",
+      body: "I'm a partial owner of Anand, an upcoming Indian restaurant in Fargo, North Dakota. I've been heavily involved in the opening process, and I've learned so much about constraints, all the legal boring stuff that comes with opening a restaurant, and building a brand identity. This has been one of the most rewarding things I've done, and I can't wait to open soon!",
       Component: MenuObject,
       w: 40,
       h: 65,
     },
     {
       id: "books",
-      label: "reading everything",
-      body: "Reading is how I think. I'm drawn to books about systems, behavior, and the way things get made — design, economics, food, cities. Right now I'm working through a stack that's half design criticism, half cookbooks.",
+      label: "always reading",
+      body: "Reading is so fun to me. I love being teleported into a different world while I'm reading. My favorite genres are mystery thriller and romance! Check out my goodreads!",
       Component: BooksObject,
       w: 65,
       h: 72,
