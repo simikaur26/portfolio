@@ -9,6 +9,7 @@ import FeatureScreenshot from "@/components/FeatureScreenshot";
 import EmphasisLine from "@/components/EmphasisLine";
 import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
+import WorkSection from "@/components/WorkSection";
 import TwoUp from "@/components/TwoUp";
 
 const NAV_SECTIONS = [
@@ -39,7 +40,7 @@ export default function Acorns() {
         />
       </div>
 
-      <main className="py-20 px-16">
+      <main className="pt-20 px-16">
         <div className="max-w-[930px] mx-auto">
           <ContextBlock
             timeline="Sep – Nov 2025"
@@ -320,11 +321,12 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
             </p>
           </div>
 
-          <h4 className="text-h4 mt-24 mb-16 pb-4">
+          <h4 className="text-h4 mt-24">
             Thanks for reading :) See some more work below
           </h4>
         </div>
       </main>
+      <WorkSection exclude="/acorns" />
 
       <CaseStudyNav sections={NAV_SECTIONS} />
     </div>

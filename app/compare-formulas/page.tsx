@@ -8,6 +8,7 @@ import GroupedPoints from "@/components/GroupedPoints";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
 import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
+import WorkSection from "@/components/WorkSection";
 
 const NAV_SECTIONS = [
   { id: "context",              label: "CONTEXT" },
@@ -36,7 +37,7 @@ export default function CompareFormulas() {
         />
       </div>
 
-      <main className="py-20 px-16">
+      <main className="pt-20 px-16">
         <div className="max-w-[930px] mx-auto">
           <div id="context">
             <ContextBlock
@@ -265,11 +266,12 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </p>
           </div>
 
-          <h4 className="text-h4 mt-24 mb-16">
+          <h4 className="text-h4 mt-24">
             Thanks for reading :) See some more work below
           </h4>
         </div>
       </main>
+      <WorkSection exclude="/compare-formulas" />
 
       <CaseStudyNav sections={NAV_SECTIONS} />
     </div>

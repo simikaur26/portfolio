@@ -11,6 +11,7 @@ import CaseVideo from "@/components/CaseVideo";
 import RefinementBlock from "@/components/RefinementBlock";
 import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
+import WorkSection from "@/components/WorkSection";
 
 export default function SampleCSI() {
   return (
@@ -26,7 +27,7 @@ export default function SampleCSI() {
         />
       </div>
 
-      <main className="py-20 px-16">
+      <main className="pt-20 px-16">
         <div className="max-w-[930px] mx-auto">
           <ContextBlock
             timeline="Jan – Apr 2026"
@@ -280,11 +281,12 @@ export default function SampleCSI() {
               This project also changed how I think about usability testing. Watching users hesitate in real time taught me that clarity often matters more than feature depth — especially in high-stakes environments where confidence and speed are tightly connected.
             </p>
           </div>
-          <h4 className="text-h4 mt-24 mb-16">
+          <h4 className="text-h4 mt-24">
             Thanks for reading :) See some more work below
           </h4>
         </div>
       </main>
+      <WorkSection exclude="/sample-csi" />
       <CaseStudyNav sections={[
         { id: "the-problem",          label: "THE PROBLEM" },
         { id: "constraints",          label: "CONSTRAINTS" },
