@@ -7,7 +7,8 @@ import QuoteCluster from "@/components/QuoteCluster";
 import Button from "@/components/Button";
 import TwoUp from "@/components/TwoUp";
 import ThreeUp from "@/components/ThreeUp";
-import CaseVideo from "@/components/CaseVideo";
+import Script from "next/script";
+import FigmaEmbed from "@/components/FigmaEmbed";
 import RefinementBlock from "@/components/RefinementBlock";
 import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
@@ -42,7 +43,7 @@ export default function SampleCSI() {
             height={744}
           />
 
-          <div id="the-problem" className="mt-20">
+          <div id="the-problem" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="THE PROBLEM"
               heading="The problem wasn't digitizing paperwork. It was preserving trust."
@@ -62,7 +63,7 @@ export default function SampleCSI() {
             </div>
           </div>
 
-          <div id="constraints" className="mt-20">
+          <div id="constraints" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="CONSTRAINTS"
               heading="Designing for inconsistency became the hardest constraint."
@@ -90,7 +91,7 @@ export default function SampleCSI() {
             />
           </div>
 
-          <div id="key-design-decision-1" className="mt-20">
+          <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 1"
               heading="AI as guardrails, not automation"
@@ -110,10 +111,18 @@ export default function SampleCSI() {
             <p className="text-body mt-6">
               The goal wasn&apos;t to replace human judgment, but to support it. AI helped reduce cognitive load without taking control away from the user, because in this kind of workflow, trust mattered more than automation.
             </p>
-            <CaseVideo src="/sample-csi/ai-feature.mp4" />
+            <div className="mt-8 mb-2">
+              <FigmaEmbed
+                src="https://player.vimeo.com/video/1196749357?badge=0&autopause=0&player_id=0&app_id=58479"
+                aspectRatio={127.66}
+                maxWidth={400}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
           </div>
 
-          <div id="key-design-decision-2" className="mt-20">
+          <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 2"
               heading="The biggest pivot came from something we didn't hear in interviews"
@@ -152,7 +161,7 @@ export default function SampleCSI() {
             />
           </div>
 
-          <div id="key-design-decision-3" className="mt-20">
+          <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 3"
               heading="Usability testing exposed where clarity mattered more than features"
@@ -207,7 +216,7 @@ export default function SampleCSI() {
             />
           </div>
 
-          <div id="final-outcome" className="mt-20 scroll-mt-12">
+          <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
             <OutcomeBanner heading="The final system balanced structure with flexibility" />
             <p className="text-body mt-8">
               The final system balanced structure with flexibility — a critical requirement we only fully understood midway through the project.
@@ -215,18 +224,23 @@ export default function SampleCSI() {
             <p className="text-body mt-6">
               While SampleCSI isn&apos;t live yet due to funding limitations, usability participants consistently described the system as faster and easier to navigate than current documentation processes.
             </p>
-            <CaseVideo src="/sample-csi/final-outcome.mp4" />
+            <div className="mt-8 mb-2">
+              <FigmaEmbed
+                src="https://player.vimeo.com/video/1196749356?badge=0&autopause=0&player_id=0&app_id=58479"
+                aspectRatio={127.66}
+                maxWidth={400}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
           </div>
-          <div id="using-ai" className="mt-20">
+          <div id="using-ai" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="USING AI"
               heading="AI also became part of how we built SampleCSI"
             />
             <p className="text-body mt-8">
               There was something a little meta about this project: we were designing an AI-assisted tool while actively using AI tools ourselves. That wasn&apos;t the original plan, but it became one of the more interesting parts of the process.
-            </p>
-            <p className="text-body mt-6">
-              Early on, we used AI cautiously — mostly for quick lookups and sanity checks. But as the project grew more complex, we started leaning on it more intentionally. We found ourselves treating it less like a search engine and more like a collaborator with strong opinions we didn&apos;t always agree with.
             </p>
             <p className="text-body mt-6">We used AI tools to:</p>
             <ol className="mt-4 ml-6 space-y-2 list-decimal">
@@ -236,10 +250,10 @@ export default function SampleCSI() {
               <li className="text-body pl-2">Draft usability testing scripts</li>
             </ol>
             <p className="text-body mt-6">
-              Each of those tasks had a different character. Synthesis felt like the clearest win — feeding in raw transcripts and getting back organized themes saved hours. Brainstorming was useful for breaking logjams, even when the suggestions weren&apos;t right. Prototyping with AI was the most surprising: it could produce realistic UI in minutes, which let us test more directions than we would have otherwise.
+              Each of those tasks had a different character. Synthesis was actually the one that humbled us first. We fed in raw transcripts expecting organized, usable themes and got back output that sounded polished but felt generic. It missed the deeper patterns that were actually emerging from our interviews. We ended up stepping away from the AI-generated summaries and returning to manual affinity mapping to find more grounded insights ourselves.
             </p>
             <p className="text-body mt-6">
-              Drafting testing scripts was the one that required the most oversight. The outputs were plausible but often leading — they'd frame questions in ways that pointed users toward the &apos;right&apos; answer. Editing those required knowing what good looked like in the first place.
+              Brainstorming was more useful for breaking logjams, even when the suggestions weren&apos;t right. Prototyping with AI was the most surprising: it could produce realistic UI in minutes, which let us test more directions than we would have otherwise. Drafting testing scripts required the most oversight — the outputs were plausible but often leading, framing questions in ways that pointed users toward the right answer.
             </p>
             <div className="mt-10 flex justify-center gap-12 items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -250,23 +264,27 @@ export default function SampleCSI() {
               <img src="/granola.svg" alt="Granola" width={60} height={60} />
             </div>
             <p className="text-body mt-10">
-              We used ChatGPT for broad brainstorming and quick iteration. Claude was better for longer, more structured tasks — things where we needed it to hold a lot of context at once. Granola handled meeting notes and kept our synthesis sessions from disappearing into a folder no one opened again.
+              We used ChatGPT for broad brainstorming and quick iteration. Claude was better for longer, more structured tasks where we needed it to hold a lot of context at once. Granola handled meeting notes and kept our synthesis sessions from disappearing into a folder no one opened again.
             </p>
             <p className="text-body mt-6">
-              The biggest thing we learned was that AI worked best when we already had a strong point of view. When we came in with a clear question, we got useful output. When we came in vague, we got confident-sounding noise.
+              The biggest thing we learned was that AI worked best when we already had a strong point of view. When we came in with a clear question, we got useful output. When we came in vague, we got confident-sounding noise. And when we leaned on it too early — before we had done the hard interpretive work ourselves — it gave us the illusion of progress without the substance.
             </p>
             <p className="text-body mt-6">
-              That changed how we structured our working sessions. We started front-loading more alignment work between team members before involving AI — not because we distrusted it, but because we needed to know what we were actually trying to answer before we asked.
-            </p>
-            <p className="text-body mt-6">
-              It also made us more deliberate about when to step back. The more we relied on AI to generate options, the more we needed to anchor on our own research to evaluate them. The tools were fast; judgment still had to come from us.
+              That changed how we structured our working sessions. We started front-loading more alignment work between team members before involving AI, and we got more deliberate about returning to our own research to evaluate whatever it generated.
             </p>
             <EmphasisLine>
               Ironically, that mirrored one of the core ideas behind SampleCSI itself: AI worked best as augmentation, not replacement.
             </EmphasisLine>
-            <CaseVideo src="/sample-csi/research-overview.mp4" />
+            <div className="mt-8 mb-2">
+              <FigmaEmbed
+                src="https://player.vimeo.com/video/1196749355?badge=0&autopause=0&player_id=0&app_id=58479"
+                aspectRatio={64.52}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
           </div>
-          <div id="reflection" className="mt-20">
+          <div id="reflection" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="REFLECTION"
               heading="I learned that workflow design isn't really about screens"
@@ -286,6 +304,7 @@ export default function SampleCSI() {
           </h4>
         </div>
       </main>
+      <Script src="https://player.vimeo.com/api/player.js" strategy="afterInteractive" />
       <WorkSection exclude="/sample-csi" />
       <CaseStudyNav sections={[
         { id: "the-problem",          label: "THE PROBLEM" },

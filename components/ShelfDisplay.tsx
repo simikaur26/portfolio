@@ -128,6 +128,8 @@ type ItemData = {
   h: number;
   link?: { href: string; text: string };
   photo?: string;
+  photoHeight?: number;
+  photoFit?: "cover" | "contain";
 };
 
 const SHELVES: [ItemData, ItemData][] = [
@@ -159,6 +161,7 @@ const SHELVES: [ItemData, ItemData][] = [
       Component: BreadObject,
       w: 70,
       h: 50,
+      photo: "/about/bread.jpeg",
     },
     {
       id: "dj-board",
@@ -177,6 +180,9 @@ const SHELVES: [ItemData, ItemData][] = [
       Component: MenuObject,
       w: 40,
       h: 65,
+      photo: "/about/anandlogo.png",
+      photoHeight: 130,
+      photoFit: "contain",
     },
     {
       id: "books",
@@ -186,6 +192,7 @@ const SHELVES: [ItemData, ItemData][] = [
       w: 65,
       h: 72,
       link: { href: "https://www.goodreads.com", text: "see what I'm reading →" },
+      photo: "/about/book.jpeg",
     },
   ],
 ];
@@ -395,12 +402,12 @@ function SpotlightSection({
                   width={600}
                   height={400}
                   className="mt-4 w-full rounded-[8px]"
-                  style={{ height: 160, objectFit: "cover" }}
+                  style={{ height: activeItem.photoHeight ?? 200, objectFit: activeItem.photoFit ?? "cover" }}
                 />
               ) : (
                 <div
                   className="mt-4 w-full rounded-[8px] flex items-center justify-center"
-                  style={{ backgroundColor: "#BBBDBC", height: 160 }}
+                  style={{ backgroundColor: "#BBBDBC", height: 200 }}
                 >
                   <span className="text-label-l3" style={{ color: "#363636" }}>
                     photo coming soon

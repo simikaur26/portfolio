@@ -272,19 +272,7 @@ function IdentitySection({
 
 export default function HomeIntro({ onSkip }: { onSkip?: () => void } = {}) {
   return (
-    /*
-      Scroll-snap container: height = viewport minus nav, overflow-y scroll.
-      All 6 sections scroll internally so the window scroll position stays at 0
-      throughout the entire intro. Navigating to a case study always starts at
-      the top with no scroll-reset tricks needed.
-    */
-    <div
-      style={{
-        height: "calc(100vh - var(--nav-height))",
-        overflowY: "scroll",
-        scrollSnapType: "y mandatory",
-      }}
-    >
+    <>
       {/* Section 1 — Intro */}
       <RevealSection>
         <h1 className="text-h1">hey! i&apos;m simi,</h1>
@@ -352,8 +340,8 @@ export default function HomeIntro({ onSkip }: { onSkip?: () => void } = {}) {
         Popup={LegoPopup}
       />
 
-      {/* Section 6 — Closer */}
-      <RevealSection>
+      {/* Section 6 — Closer: slightly shorter so WorkSection cards peek up below */}
+      <RevealSection showBottomFade style={{ height: "calc(100vh - var(--nav-height) - 110px)" }}>
         <h3 className="text-h3">
           but most of my focus goes into{" "}
           <span style={{ color: ACCENT }}>making products</span>
@@ -361,6 +349,6 @@ export default function HomeIntro({ onSkip }: { onSkip?: () => void } = {}) {
           <strong>here&apos;s the work.</strong>
         </h3>
       </RevealSection>
-    </div>
+    </>
   );
 }

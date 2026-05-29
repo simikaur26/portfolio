@@ -19,7 +19,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="w-full py-4 z-50">
+    <nav className="w-full py-4 z-50 sticky top-0" style={{ backgroundColor: "var(--color-bg)" }}>
       <div className="max-w-[930px] mx-auto px-16 flex items-center justify-between">
         <Link href="/" aria-label="Home">
           <Image src="/logo.svg" alt="Simi Kaur" width={60} height={50} priority />

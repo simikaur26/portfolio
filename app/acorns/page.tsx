@@ -11,6 +11,7 @@ import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import WorkSection from "@/components/WorkSection";
 import TwoUp from "@/components/TwoUp";
+import FigmaEmbed from "@/components/FigmaEmbed";
 
 const NAV_SECTIONS = [
   { id: "the-problem",           label: "THE PROBLEM" },
@@ -37,6 +38,7 @@ export default function Acorns() {
           rightSrc="/acorns/hero-right.svg"
           href="https://www.figma.com/proto/8bKON9jlaGGptYzg0OO1MW/Portfolio?page-id=60%3A26398&node-id=222-8246&viewport=1211%2C368%2C0.11&t=rdIp14feaTrHVmFd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=222%3A8246&show-proto-sidebar=1"
           linkText="Click here for a live preview"
+          previewIcon="/figma.svg"
         />
       </div>
 
@@ -67,7 +69,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           />
 
           {/* THE PROBLEM */}
-          <div id="the-problem" className="mt-20">
+          <div id="the-problem" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="THE PROBLEM"
               heading="The real problem wasn't document upload. It was uncertainty."
@@ -116,7 +118,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           </div>
 
           {/* CONSTRAINTS */}
-          <div id="constraints" className="mt-20">
+          <div id="constraints" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="CONSTRAINTS"
               heading="Making the experience simpler didn't mean the system was simple."
@@ -130,7 +132,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           </div>
 
           {/* KEY DESIGN DECISION 1 */}
-          <div id="key-design-decision-1" className="mt-20">
+          <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 1"
               heading="Replace the generic uploader with a guided experience."
@@ -190,7 +192,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           </div>
 
           {/* KEY DESIGN DECISION 2 */}
-          <div id="key-design-decision-2" className="mt-20">
+          <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 2"
               heading="Progressive disclosure helped reduce anxiety."
@@ -228,7 +230,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           </div>
 
           {/* KEY DESIGN DECISION 3 */}
-          <div id="key-design-decision-3" className="mt-20">
+          <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 3"
               heading="Let customers stay connected to their account, even while suspended."
@@ -279,7 +281,7 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
           </div>
 
           {/* FINAL OUTCOME */}
-          <div id="final-outcome" className="mt-20 scroll-mt-12">
+          <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
             <OutcomeBanner
               heading="The final experience turned a black-box process into a guided recovery flow."
             />
@@ -293,16 +295,13 @@ I partnered with a PM, engineering, and compliance stakeholders, and owned the d
               Most importantly, the experience felt more human. Instead of leaving customers in the dark during a stressful moment, the flow gave them context, progress, and reassurance.
             </p>
 
-            <div
-              className="mt-8 w-full flex items-center justify-center"
-              style={{ backgroundColor: "#BBBDBC", height: "400px" }}
-            >
-              <p className="text-label-l3 text-secondary">Final outcome video coming soon</p>
+            <div className="mt-8 mb-2">
+              <FigmaEmbed src="https://embed.figma.com/proto/SIm2tPuTMaJahlj9l7aFzw/Dynamic-Suspension-Experience?node-id=598-91470&viewport=890%2C321%2C0.05&scaling=scale-down&content-scaling=fixed&starting-point-node-id=598%3A91470&show-proto-sidebar=1&page-id=488%3A20887&embed-host=share" />
             </div>
           </div>
 
           {/* REFLECTION */}
-          <div id="reflection" className="mt-20">
+          <div id="reflection" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="REFLECTION"
               heading="I learned that trust breaks fast when users lose visibility."

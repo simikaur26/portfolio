@@ -39,7 +39,7 @@ export default function CompareFormulas() {
 
       <main className="pt-20 px-16">
         <div className="max-w-[930px] mx-auto">
-          <div id="context">
+          <div id="context" className="scroll-mt-[50px]">
             <ContextBlock
               timeline="May 2026"
               role="Product Designer"
@@ -58,7 +58,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             height={365}
           />
 
-          <div id="the-problem" className="mt-20">
+          <div id="the-problem" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="THE PROBLEM"
               heading="The ask was feature parity. The real challenge was workflow confidence."
@@ -88,7 +88,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </div>
           </div>
 
-          <div id="constraints" className="mt-20">
+          <div id="constraints" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="CONSTRAINTS"
               heading="Designing for inconsistency became the hardest constraint."
@@ -116,7 +116,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </div>
           </div>
 
-          <div id="key-design-decision-1" className="mt-20">
+          <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 1"
               heading="Split the workflow instead of forcing one view to do everything"
@@ -155,7 +155,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </p>
           </div>
 
-          <div id="key-design-decision-2" className="mt-20">
+          <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 2"
               heading="Turn comparison into action"
@@ -188,7 +188,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </div>
           </div>
 
-          <div id="key-design-decision-3" className="mt-20">
+          <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="KEY DESIGN DECISION 3"
               heading="Small visual cues made dense formula data easier to trust."
@@ -226,7 +226,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             />
           </div>
 
-          <div id="final-outcome" className="mt-20 scroll-mt-12">
+          <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
             <OutcomeBanner
               heading="The final design turned a static report into a clearer, more actionable workspace."
             />
@@ -247,7 +247,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             </div>
           </div>
 
-          <div id="reflection" className="mt-20 mb-20">
+          <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="REFLECTION"
               heading="I learned that migration work is really behavior-change work."

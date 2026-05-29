@@ -10,6 +10,8 @@ const STORAGE_KEY = "hasSeenIntro";
 export default function Home() {
   // null = not yet checked (avoids flash of wrong content during hydration)
   const [hasSeenIntro, setHasSeenIntro] = useState<boolean | null>(null);
+  // Tracks whether the WorkSection has scrolled into view this session
+  const [workInView, setWorkInView] = useState(false);
   const workRef = useRef<HTMLDivElement>(null);
 
   // Read localStorage once on mount — can't run on server so useEffect is required
@@ -26,6 +28,7 @@ export default function Home() {
       ([entry]) => {
         if (entry.isIntersecting) {
           localStorage.setItem(STORAGE_KEY, "true");
+          setWorkInView(true);
           obs.disconnect();
         }
       },
@@ -33,6 +36,15 @@ export default function Home() {
     );
     obs.observe(el);
     return () => obs.disconnect();
+  }, [hasSeenIntro]);
+
+  // Enable window-level snap while showing the intro; clean up when done
+  useEffect(() => {
+    if (hasSeenIntro !== false) return;
+    document.documentElement.style.scrollSnapType = "y proximity";
+    return () => {
+      document.documentElement.style.scrollSnapType = "";
+    };
   }, [hasSeenIntro]);
 
   // If arriving from a case study via the Work nav link, scroll to #work
@@ -62,7 +74,13 @@ export default function Home() {
       ) : (
         <HomeIntro onSkip={markSeen} />
       )}
-      <div ref={workRef}>
+      <div
+        ref={workRef}
+        style={{
+          opacity: hasSeenIntro === false && !workInView ? 0.7 : 1,
+          transition: "opacity 0.4s ease",
+        }}
+      >
         <WorkSection />
       </div>
     </main>
