@@ -23,7 +23,7 @@ export default function CaseImage({ src, alt, width, height, caption, displayWid
         className="w-full h-auto"
       />
       {caption && (
-        <figcaption className="text-label-l3 text-secondary mt-2 text-center">
+        <figcaption className="text-label-l3 text-caption mt-2 text-center">
           {caption}
         </figcaption>
       )}

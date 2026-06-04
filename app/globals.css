@@ -16,6 +16,7 @@ html {
   --color-primary: #232323;
   --color-secondary: #363636;
   --color-border: #bbbdbc;
+  --color-caption: #888780;
   --color-teal: #235f72;
   --color-brown: #723e21;
   --color-navy: #1b2d4f;
@@ -92,7 +93,7 @@ html {
 
   .text-body {
     font-size: 18px;
-    line-height: 32.8px;
+    line-height: 29px;
     font-weight: 300;
   }
 
@@ -136,6 +137,7 @@ html {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.18em;
+    color: #888780;
   }
 
   /* ─── Button text style ────────────────────────────────────────────── */

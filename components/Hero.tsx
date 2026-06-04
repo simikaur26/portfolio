@@ -8,8 +8,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 type Props = {
   title: string;
   href?: string;
-  leftSrc: string;
-  rightSrc: string;
+  leftSrc?: string;
+  rightSrc?: string;
+  heroImage?: string;
+  /** How far from the top of the hero the centered image starts, e.g. "44%" */
+  heroImageTop?: string;
+  /** Width of the centered image relative to the hero, e.g. "70%" */
+  heroImageWidth?: string;
   linkText?: string;
   logoSrc?: string;
   logoWidth?: number;
@@ -22,6 +27,9 @@ export default function Hero({
   href,
   leftSrc,
   rightSrc,
+  heroImage,
+  heroImageTop = "44%",
+  heroImageWidth = "75%",
   linkText = "Click here for a live preview",
   logoSrc,
   logoWidth,
@@ -36,8 +44,8 @@ export default function Hero({
     offset: ["start start", "end start"],
   });
 
-  // As the hero scrolls out (0→1), images drift upward 0→-60px
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  // As the hero scrolls out (0→1), images drift upward 0→-120px
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -120]);
 
   return (
     <section
@@ -46,7 +54,7 @@ export default function Hero({
       style={{ height: "calc(100vh - var(--nav-height))" }}
     >
       {/* Centered content — banner and links stay in a readable column */}
-      <div className="relative z-10 flex flex-col items-center gap-6 pt-20 px-16">
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-8 px-16">
         {/* Optional logo above the banner */}
         {logoSrc && logoWidth && logoHeight && (
           <Image
@@ -60,12 +68,12 @@ export default function Hero({
 
         {/* Banner — background uses --case-accent set on the page wrapper */}
         <div
-          className="w-[62%] rounded-2xl px-12 py-10 text-center"
+          className="w-[62%] rounded-2xl px-10 py-6 text-center"
           style={{ backgroundColor: "var(--case-accent)" }}
         >
-          <h3 className="text-h3 text-center" style={{ color: "#ffffff" }}>
+          <h4 className="text-h4 text-center" style={{ color: "#ffffff", fontWeight: 500 }}>
             {title}
-          </h3>
+          </h4>
         </div>
 
         {/* Live preview link — only rendered when href is provided */}
@@ -106,33 +114,58 @@ export default function Hero({
         </motion.div>
       </div>
 
-      {/* Left mockup — outer div handles static offset, motion.div handles parallax */}
-      <div className="absolute bottom-0 left-0 w-[28%] translate-y-[25%]">
-        <motion.div style={{ y: imageY }}>
-          <Image
-            src={leftSrc}
-            alt=""
-            width={957}
-            height={1098}
-            className="w-full h-auto"
-            priority
-          />
-        </motion.div>
-      </div>
+      {heroImage ? (
+        /* Centered hero image — top-anchored so start point is predictable; bottom clipped by overflow:hidden */
+        <div
+          className="absolute left-1/2 -translate-x-1/2"
+          style={{ top: heroImageTop, width: heroImageWidth }}
+        >
+          <motion.div style={{ y: imageY }}>
+            <Image
+              src={heroImage}
+              alt=""
+              width={1400}
+              height={900}
+              className="w-full h-auto"
+              priority
+            />
+          </motion.div>
+        </div>
+      ) : (
+        <>
+          {/* Left mockup — outer div handles static offset, motion.div handles parallax */}
+          {leftSrc && (
+            <div className="absolute bottom-0 left-0 w-[28%] translate-y-[25%]">
+              <motion.div style={{ y: imageY }}>
+                <Image
+                  src={leftSrc}
+                  alt=""
+                  width={957}
+                  height={1098}
+                  className="w-full h-auto"
+                  priority
+                />
+              </motion.div>
+            </div>
+          )}
 
-      {/* Right mockup — same structure */}
-      <div className="absolute bottom-0 right-0 w-[28%] translate-y-[25%]">
-        <motion.div style={{ y: imageY }}>
-          <Image
-            src={rightSrc}
-            alt=""
-            width={936}
-            height={1064}
-            className="w-full h-auto"
-            priority
-          />
-        </motion.div>
-      </div>
+          {/* Right mockup — same structure */}
+          {rightSrc && (
+            <div className="absolute bottom-0 right-0 w-[28%] translate-y-[25%]">
+              <motion.div style={{ y: imageY }}>
+                <Image
+                  src={rightSrc}
+                  alt=""
+                  width={936}
+                  height={1064}
+                  className="w-full h-auto"
+                  priority
+                />
+              </motion.div>
+            </div>
+          )}
+        </>
+      )}
     </section>
   );
 }

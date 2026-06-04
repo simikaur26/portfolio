@@ -21,10 +21,11 @@ export default function SampleCSI() {
     >
       <div id="hero">
         <Hero
-          title="Designing Digital Evidence Collection for the Real World"
+          title="Digitizing the Evidence Collection Process"
           href="https://amulyavw02.github.io/samplecsi/"
-          leftSrc="/sample-csi/hero-left.png"
-          rightSrc="/sample-csi/hero-right.png"
+          heroImage="/sample-csi/hero.svg"
+          heroImageWidth="72%"
+          heroImageTop="46%"
         />
       </div>
 
@@ -34,7 +35,7 @@ export default function SampleCSI() {
             timeline="Jan – Apr 2026"
             role="Product Designer"
             team="5 students"
-            overview="A semester-long UX project redesigning the case submission interface for a crime scene investigation platform. The focus was on reducing cognitive load for investigators during high-stress documentation workflows, with particular attention to field-entry order, progressive disclosure, and mobile usability."
+            overview="Over 12 weeks, our team designed SampleCSI, a platform that helps officers document, organize, and transfer evidence from the field to the lab. I worked across the full process, conducting research interviews, leading competitive analysis, narrating usability tests, and driving the final UI system and polished interface designs. The project was highly collaborative, with every team member contributing across research and design."
           />
           <CaseImage
             src="/sample-csi/overview-image.png"
@@ -49,10 +50,7 @@ export default function SampleCSI() {
               heading="The problem wasn't digitizing paperwork. It was preserving trust."
             />
             <p className="text-body mt-8">
-              Early in our research, we learned that evidence collection is messy, high-pressure, and inconsistent between agencies. Officers were documenting information across notebooks, spreadsheets, photos, and disconnected systems. Small mistakes, like missing timestamps or unclear chain-of-custody records, could create serious issues later.
-            </p>
-            <p className="text-body mt-6">
-              At first, we thought the challenge was mostly about efficiency: making reporting faster and reducing paperwork. But interviews and artifact analysis shifted our perspective.
+              Early in our research, we learned that evidence collection is messy, high-pressure, and inconsistent between agencies. Officers were documenting information across notebooks, spreadsheets, photos, and disconnected systems. Small mistakes, like missing timestamps or unclear chain-of-custody records, could create serious issues later. At first, we thought the challenge was mostly about efficiency: making reporting faster and reducing paperwork. But interviews and artifact analysis shifted our perspective.
             </p>
             <EmphasisLine>
               The real problem was reliability under pressure. Officers weren&apos;t just filling out forms; they were trying to build credible narratives from chaotic scenes.
@@ -69,13 +67,10 @@ export default function SampleCSI() {
               heading="Designing for inconsistency became the hardest constraint."
             />
             <p className="text-body mt-8">
-              One of the biggest challenges was realizing there wasn't a single workflow to design around. Different agencies documented evidence differently, used different terminology, and prioritized different information.
+              One of the biggest challenges was realizing there wasn&apos;t a single workflow to design around. Different agencies documented evidence differently, used different terminology, and prioritized different information. We first explored more standardized flows, but the more artifacts we reviewed, the more limiting that approach felt. It might improve consistency, but it would also force officers to change the way they already worked. So we made a different tradeoff: build a system that felt flexible without losing structure.
             </p>
-            <p className="text-body mt-6">
-              We first explored more standardized flows, but the more artifacts we reviewed, the more limiting that approach felt. It might improve consistency, but it would also force officers to change the way they already worked.
-            </p>
-            <p className="text-body mt-6">
-              So we made a different tradeoff: build a system that felt flexible without losing structure. That led to four core features:
+            <p className="text-body mt-6" style={{ fontWeight: 600 }}>
+              That led to four core features:
             </p>
             <TwoUp
               images={[
@@ -97,20 +92,11 @@ export default function SampleCSI() {
               heading="AI as guardrails, not automation"
             />
             <p className="text-body mt-8">
-              As we learned more about evidence collection workflows, we kept running into the same issue: officers needed to document information quickly, but missing even a small detail could create problems later.
-            </p>
-            <p className="text-body mt-6">
-              We explored more automated documentation flows early on, but the deeper we got into the problem space, the less comfortable full automation felt. Evidence still needed to be observed, interpreted, and signed off by the person collecting it. In a workflow built around accountability and chain of custody, fully AI-generated reports felt more likely to create distrust than confidence.
+              As we learned more about evidence collection workflows, we kept running into the same issue: officers needed to document information quickly, but missing even a small detail could create problems later. We explored more automated documentation flows early on, but the deeper we got into the problem space, the less comfortable full automation felt. In a workflow built around accountability and chain of custody, fully AI-generated reports felt more likely to create distrust than confidence.
             </p>
             <EmphasisLine>
               So we intentionally designed AI to stay in the background.
             </EmphasisLine>
-            <p className="text-body mt-6">
-              Instead of generating reports, the system acted more like a set of guardrails. If an officer documented a knife, for example, the interface could surface prompts they might otherwise forget, like details about handling, location, or related evidence.
-            </p>
-            <p className="text-body mt-6">
-              The goal wasn&apos;t to replace human judgment, but to support it. AI helped reduce cognitive load without taking control away from the user, because in this kind of workflow, trust mattered more than automation.
-            </p>
             <div className="mt-8 mb-2">
               <FigmaEmbed
                 src="https://player.vimeo.com/video/1196749357?badge=0&autopause=0&player_id=0&app_id=58479"
@@ -120,6 +106,9 @@ export default function SampleCSI() {
                 referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
+            <p className="text-body mt-6">
+              Instead of generating reports, the system acted more like a set of guardrails. If an officer documented a knife, for example, the interface could surface prompts they might otherwise forget, like details about handling, location, or related evidence. The goal wasn&apos;t to replace human judgment, but to support it.
+            </p>
           </div>
 
           <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
@@ -128,19 +117,7 @@ export default function SampleCSI() {
               heading="The biggest pivot came from something we didn't hear in interviews"
             />
             <p className="text-body mt-8">
-              One of our most important ideas came late in the process.
-            </p>
-            <p className="text-body mt-6">
-              During synthesis, we realized evidence rarely exists independently — items are often connected. A blood sample relates to a weapon. A fingerprint relates to a broken object. But our original designs treated every evidence item as flat and isolated.
-            </p>
-            <p className="text-body mt-6">
-              What made this interesting was that none of our interviews explicitly told us this. In hindsight, we probably weren&apos;t asking the right questions. But once we noticed the pattern through artifact analysis and workflow mapping, we couldn&apos;t unsee it.
-            </p>
-            <p className="text-body mt-6">
-              We pivoted the case summary experience to support linked evidence relationships. Instead of displaying evidence as disconnected entries, the system could visually group linked evidence together.
-            </p>
-            <p className="text-body mt-6">
-              This changed the architecture of the case summary page entirely. We explored several directions:
+              One of our most important insights came late in the process. During synthesis, we realized evidence rarely exists in isolation — a blood sample connects to a weapon, a fingerprint to a broken object. None of our interviews explicitly revealed this; we uncovered it through artifact analysis and workflow mapping. Once we saw the pattern, we redesigned the case summary experience to support parent-child evidence relationships. We explored several directions:
             </p>
             <ThreeUp
               images={[
@@ -167,13 +144,7 @@ export default function SampleCSI() {
               heading="Usability testing exposed where clarity mattered more than features"
             />
             <p className="text-body mt-8">
-              I narrated all of our usability tests, which gave me a front-row seat to where users hesitated, second-guessed themselves, or lost confidence.
-            </p>
-            <p className="text-body mt-6">
-              One recurring issue was language. Terms that felt obvious to us weren&apos;t obvious to officers. Labels like &apos;Activity Log&apos; or &apos;Evidence Management&apos; created uncertainty about what actions lived where.
-            </p>
-            <p className="text-body mt-6">
-              We made a series of targeted refinements. These weren&apos;t flashy changes, but they dramatically improved comprehension and flow. One participant summed it up well: &apos;This would make our work faster.&apos;
+              There was one recurring issue that came up in usability testing, and that was language. Terms that felt obvious to us weren&apos;t obvious to officers. We made a series of targeted refinements that improved comprehension and flow. One participant summed it up well: &apos;This would make our work faster.&apos;
             </p>
 
             <RefinementBlock
@@ -219,10 +190,7 @@ export default function SampleCSI() {
           <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
             <OutcomeBanner heading="The final system balanced structure with flexibility" />
             <p className="text-body mt-8">
-              The final system balanced structure with flexibility — a critical requirement we only fully understood midway through the project.
-            </p>
-            <p className="text-body mt-6">
-              While SampleCSI isn&apos;t live yet due to funding limitations, usability participants consistently described the system as faster and easier to navigate than current documentation processes.
+              The final system balanced structure with flexibility, which was a critical requirement. While SampleCSI isn&apos;t live yet due to funding limitations, usability participants consistently described the system as faster and easier to navigate than current documentation processes.
             </p>
             <div className="mt-8 mb-2">
               <FigmaEmbed
@@ -290,18 +258,12 @@ export default function SampleCSI() {
               heading="I learned that workflow design isn't really about screens"
             />
             <p className="text-body mt-8">
-              It&apos;s about understanding how people make decisions under pressure.
-            </p>
-            <p className="text-body mt-6">
-              If I revisited this project, I&apos;d spend more time validating edge cases earlier, especially around evidence relationships and multi-agency workflows. Our biggest pivot happened relatively late, and earlier questioning could have surfaced it sooner.
-            </p>
-            <p className="text-body mt-6">
-              This project also changed how I think about usability testing. Watching users hesitate in real time taught me that clarity often matters more than feature depth — especially in high-stakes environments where confidence and speed are tightly connected.
+              It&apos;s about understanding how people make decisions under pressure. If I revisited this project, I&apos;d spend more time validating edge cases earlier, especially around evidence relationships and multi-agency workflows. Our biggest pivot happened relatively late, and earlier questioning could have surfaced it sooner. This project also changed how I think about usability testing. Watching users hesitate in real time taught me that clarity often matters more than feature depth, especially in high-stakes environments where confidence and speed are tightly connected.
             </p>
           </div>
-          <h4 className="text-h4 mt-24">
+          <h5 className="text-h5 mt-24">
             Thanks for reading :) See some more work below
-          </h4>
+          </h5>
         </div>
       </main>
       <Script src="https://player.vimeo.com/api/player.js" strategy="afterInteractive" />

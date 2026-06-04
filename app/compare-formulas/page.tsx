@@ -32,8 +32,9 @@ export default function CompareFormulas() {
           logoSrc="/compare-formulas/pml-logo.svg"
           logoWidth={186}
           logoHeight={53}
-          leftSrc="/compare-formulas/hero-left.svg"
-          rightSrc="/compare-formulas/hero-right.svg"
+          heroImage="/compare-formulas/hero.svg"
+          heroImageWidth="76%"
+          heroImageTop="46%"
         />
       </div>
 
@@ -61,7 +62,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
           <div id="the-problem" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
               eyebrow="THE PROBLEM"
-              heading="The ask was feature parity. The real challenge was workflow confidence."
+              heading="The Real Challenge Was Workflow Confidence"
             />
             <p className="text-body mt-8">
               The ask sounded simple: rebuild an Optiva feature in Element AI. But the real problem was trust.
@@ -122,12 +123,8 @@ I was the solo product designer, working with one PM and two engineers. I owned 
               heading="Split the workflow instead of forcing one view to do everything"
             />
             <p className="text-body mt-8">
-              My early explorations tried to support every need in one comparison table: ingredients, percentages, phases, formula sequence, and editing. That approach broke down quickly when we realized there were two user groups using this feature so two separate things.
+              My early explorations tried to combine ingredients, percentages, phases, formula sequence, and editing into a single comparison table. That approach quickly broke down as we realized users had two distinct needs. Adding phases made formulas harder to compare, creating what we called a &apos;Tetris&apos; problem — different phase structures no longer aligned cleanly.
             </p>
-            <p className="text-body mt-6">
-              When phases entered the table, the layout became harder to scan because formulas did not always line up neatly. One discussion framed it as a &apos;Tetris&apos; problem: once formulas had different phase structures, the comparison stopped being straightforward.
-            </p>
-            <p className="text-body mt-6">So I split the experience into two views:</p>
             <div className="mt-8">
               <FeatureScreenshot
                 blocks={[
@@ -150,9 +147,6 @@ I was the solo product designer, working with one PM and two engineers. I owned 
                 ]}
               />
             </div>
-            <p className="text-body mt-8">
-              The tradeoff was adding another mode, but it made each view clearer. Instead of one dense table trying to satisfy everyone, each view supported a distinct job.
-            </p>
           </div>
 
           <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
@@ -161,16 +155,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
               heading="Turn comparison into action"
             />
             <p className="text-body mt-8">
-              The biggest improvement over Optiva was making the comparison actionable.
-            </p>
-            <p className="text-body mt-6">
-              In the legacy workflow, finding a mistake was only the beginning. Users still had to leave the report, open the formula, edit it, and rerun the comparison. During research, one user said inline editing would make the workflow &apos;significantly easier.&apos;
-            </p>
-            <p className="text-body mt-6">
-              I explored edit states directly inside the comparison experience. Simple percentage changes could be handled inline, while more complex changes, like adding an ingredient that did not exist in a formula, needed a guided flow with the right context.
-            </p>
-            <p className="text-body mt-6">
-              This became a key design shift: the tool was no longer just a report. It became a workspace where chemists could find differences and resolve them faster.
+              The biggest improvement over Optiva was making comparison actionable. Instead of finding issues and switching tools to fix them, users could make simple edits directly in the comparison view and follow guided flows for more complex changes. The tool evolved from a static report into a workspace for resolving differences faster.
             </p>
             <div className="mt-8">
               <FeatureScreenshot
@@ -194,9 +179,6 @@ I was the solo product designer, working with one PM and two engineers. I owned 
               heading="Small visual cues made dense formula data easier to trust."
             />
             <p className="text-body mt-8">
-              Once the core workflow was in place, the next challenge was helping users scan dense formula data without slowing down.
-            </p>
-            <p className="text-body mt-6">
               In Optiva, users relied heavily on visual comparison. Higher and lower amounts were highlighted against the reference formula, which made differences easier to catch. I carried that behavior into Element AI, using red and green states to show when an amount was lower or higher than the reference formula.
             </p>
             <CaseImage
@@ -207,9 +189,6 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             />
             <p className="text-body mt-6">
               I also added cues for edge cases that came up in user conversations and design critiques. If the same raw material appeared multiple times, users could quickly identify repeated ingredients instead of manually hunting across the table. If an ingredient existed in one formula but not another, the interface made that absence visible instead of hiding it.
-            </p>
-            <p className="text-body mt-6">
-              These details were small individually, but together they made the table feel more trustworthy. Users were not just seeing data; they were getting signals about what needed attention.
             </p>
             <CaseImage
               src="/compare-formulas/KD3-2.svg"
@@ -231,20 +210,14 @@ I was the solo product designer, working with one PM and two engineers. I owned 
               heading="The final design turned a static report into a clearer, more actionable workspace."
             />
             <p className="text-body mt-8">
-              Compare Formulas has been built and users are beginning to use it in Element AI.
+              Compare Formulas has been built and users are beginning to use it in Element AI. Because the feature is still early, I don&apos;t have long-term usage metrics yet. But initial reactions were positive. During review, one chemist said the feature would make their lives &apos;so much easier&apos; and that she was &apos;very excited&apos; to use it. The final experience helped move a critical Optiva workflow into Element AI while improving on the original tool through clearer context, multiple comparison views, and editing support.
             </p>
-            <p className="text-body mt-6">
-              Because the feature is still early, I do not have long-term usage metrics yet. But initial reactions were positive. During review, one chemist said the feature would make their lives &apos;so much easier&apos; and that she was &apos;very excited&apos; to use it.
-            </p>
-            <p className="text-body mt-6">
-              The final experience helped move a critical Optiva workflow into Element AI while improving on the original tool through clearer context, multiple comparison views, and editing support.
-            </p>
-            <div
-              className="mt-8 w-full flex items-center justify-center"
-              style={{ backgroundColor: "#BBBDBC", height: "400px" }}
-            >
-              <p className="text-label-l3 text-secondary">Final outcome image coming soon</p>
-            </div>
+            <CaseImage
+              src="/compare-formulas/KD1-2.svg"
+              alt="Compare Formulas final outcome"
+              width={664}
+              height={398}
+            />
           </div>
 
           <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
@@ -253,22 +226,13 @@ I was the solo product designer, working with one PM and two engineers. I owned 
               heading="I learned that migration work is really behavior-change work."
             />
             <p className="text-body mt-8">
-              This project taught me that migration work is not just about feature parity.
-            </p>
-            <p className="text-body mt-6">
-              Users needed the new tool to feel familiar enough to trust, but better enough to justify switching. The hardest design decisions came from figuring out what to preserve, what to improve, and what to simplify for the first release.
-            </p>
-            <p className="text-body mt-6">
-              If I revisited this project, I would validate edge cases earlier, especially around phase alignment and missing ingredients. Those details looked small at first, but they shaped the entire interaction model.
-            </p>
-            <p className="text-body mt-6">
-              The final product was stronger because we let the messy middle influence the design instead of hiding it.
+              This project taught me that migration work is not just about feature parity. Users needed the new tool to feel familiar enough to trust, but better enough to justify switching. The hardest design decisions came from figuring out what to preserve, what to improve, and what to simplify for the first release. If I revisited this project, I would validate edge cases earlier, especially around phase alignment and missing ingredients. Those details looked small at first, but they shaped the entire interaction model. The final product was stronger because we let the messy middle influence the design instead of hiding it.
             </p>
           </div>
 
-          <h4 className="text-h4 mt-24">
+          <h5 className="text-h5 mt-24">
             Thanks for reading :) See some more work below
-          </h4>
+          </h5>
         </div>
       </main>
       <WorkSection exclude="/compare-formulas" />

@@ -7,7 +7,7 @@ export default function SectionHeader({ heading, eyebrow }: Props) {
   return (
     <div>
       {eyebrow && (
-        <p className="text-eyebrow text-secondary">{eyebrow}</p>
+        <p className="text-eyebrow">{eyebrow}</p>
       )}
       <h5 className={`text-h5 ${eyebrow ? "mt-3" : ""}`}>{heading}</h5>
     </div>

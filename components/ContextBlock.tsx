@@ -19,7 +19,7 @@ export default function ContextBlock({ timeline, role, team, overview, tools }: 
   const TOOLS = tools ?? DEFAULT_TOOLS;
   return (
     <div>
-      <p className="text-eyebrow text-secondary">Context</p>
+      <p className="text-eyebrow">Context</p>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-3">
         <div>

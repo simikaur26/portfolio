@@ -33,7 +33,7 @@ export function ImageCell({
           className={
             captionStyle === "body"
               ? "text-body text-center mt-3"
-              : "text-label-l3 text-secondary text-center mt-3"
+              : "text-label-l3 text-caption text-center mt-3"
           }
         >
           {caption}
