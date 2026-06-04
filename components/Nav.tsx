@@ -42,7 +42,9 @@ export default function Nav() {
             About Me
           </Link>
           <a
-            href="#"
+            href="https://drive.google.com/file/d/1tGuPd6VBd0IWIinT4WaANjatwF372FWI/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-label-l2 hover:opacity-60 transition-opacity duration-150"
             style={{ color: "#232323", textDecoration: "none" }}
           >
