@@ -17,7 +17,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="px-16 py-10" style={{ backgroundColor: "#F2F1F0" }}>
+    <footer className="px-16 py-10" style={{ backgroundColor: "#f6f6f6" }}>
       <div className="max-w-[930px] mx-auto">
 
         {/* CTA */}
@@ -33,7 +33,7 @@ export default function Footer() {
           onMouseLeave={() => setHovered(false)}
           className="text-label-l2 mt-4 inline-block"
           style={{
-            backgroundColor: "#993C1D",
+            backgroundColor: "#232323",
             color: "#ffffff",
             padding: "10px 24px",
             borderRadius: 8,

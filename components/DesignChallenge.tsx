@@ -18,7 +18,7 @@ export default function DesignChallenge({ iconSrc, children }: Props) {
       <div
         className="relative z-10 w-full rounded-[8px]"
         style={{
-          backgroundColor: "#F2F1F0",
+          backgroundColor: "#ffffff",
           border: "2px solid #232323",
           padding: "40px 50px",
         }}

@@ -12,7 +12,7 @@ html {
 @theme inline {
   --font-sans: var(--font-outfit);
 
-  --color-bg: #f2f1f0;
+  --color-bg: #f6f6f6;
   --color-primary: #232323;
   --color-secondary: #363636;
   --color-border: #bbbdbc;
@@ -46,7 +46,7 @@ html {
     line-height: 88.2px;
     font-weight: 700;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   .text-h2 {
@@ -54,7 +54,7 @@ html {
     line-height: 73.1px;
     font-weight: 700;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   .text-h3 {
@@ -62,7 +62,7 @@ html {
     line-height: 65.5px;
     font-weight: 500;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   .text-h4 {
@@ -70,7 +70,7 @@ html {
     line-height: 55.4px;
     font-weight: 700;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   .text-h5 {
@@ -78,7 +78,7 @@ html {
     line-height: 40.3px;
     font-weight: 700;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   .text-h6 {
@@ -86,7 +86,7 @@ html {
     line-height: 37px;
     font-weight: 700;
     letter-spacing: 0em;
-    color: var(--case-accent);
+    color: #232323;
   }
 
   /* ─── Body ─────────────────────────────────────────────────────────── */

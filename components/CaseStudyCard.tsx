@@ -1,102 +1,104 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type Props = {
   company: string;
   heading: string;
   description: string;
-  accentColor: string;
-  imageSrc: string;
-  imageAlt: string;
+  videoSrc?: string;
+  videoPosition?: string;
+  layout?: "horizontal" | "vertical";
+  fullWidth?: boolean;
   href: string;
 };
+
+const SPRING = { type: "spring" as const, stiffness: 150, damping: 22, mass: 1 };
+const CARD_SHADOW = "0 4px 24px rgba(0,0,0,0.08)";
+const HOVER_SHADOW = "0 16px 48px rgba(0,0,0,0.10)";
 
 export default function CaseStudyCard({
   company,
   heading,
-  description,
-  accentColor,
-  imageSrc,
-  imageAlt,
+  videoSrc,
+  videoPosition = "center center",
+  layout = "vertical",
   href,
 }: Props) {
-  return (
-    // --card-accent cascades to all children so var(--card-accent) works in Tailwind arbitrary values
-    <div
-      className="relative w-full pb-[8px] pr-[8px]"
-      style={{ "--card-accent": accentColor } as React.CSSProperties}
+  const video = videoSrc ? (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="absolute inset-0 block w-full h-full object-cover"
+      style={{ objectPosition: videoPosition }}
     >
-      {/* Backing card — stays fixed while front card slides over it on hover */}
-      <div
-        className="absolute top-[8px] left-[8px] right-0 bottom-0 rounded-[16px]"
-        style={{ backgroundColor: "var(--card-accent)" }}
-        aria-hidden="true"
-      />
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+  ) : null;
 
-      {/* Front card — group drives all child hover states */}
+  if (layout === "horizontal") {
+    return (
+      <motion.div
+        whileHover={{ scale: 1.012, y: -6, boxShadow: HOVER_SHADOW }}
+        transition={SPRING}
+        style={{ borderRadius: 16, boxShadow: CARD_SHADOW }}
+      >
+        <Link
+          href={href}
+          scroll={true}
+          onClick={() => window.scrollTo(0, 0)}
+          className="flex flex-row no-underline h-[315px] rounded-[16px] overflow-hidden"
+          style={{ background: "#FFFFFF", padding: 16, gap: 16 }}
+        >
+          {/* Left — text, top-left aligned */}
+          <div style={{ width: "45%", flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
+            <p style={{ marginTop: 8, fontSize: 24, fontWeight: 500, color: "#232323", lineHeight: 1.35 }}>
+              {heading}
+            </p>
+          </div>
+
+          {/* Right — video fills remaining space */}
+          <div style={{ flex: 1, position: "relative", borderRadius: 4, overflow: "hidden" }}>
+            {video}
+          </div>
+        </Link>
+      </motion.div>
+    );
+  }
+
+  // Default: vertical layout — video top, text bottom
+  return (
+    <motion.div
+      whileHover={{ scale: 1.012, y: -6, boxShadow: HOVER_SHADOW }}
+      transition={SPRING}
+      style={{ borderRadius: 16, boxShadow: CARD_SHADOW }}
+    >
       <Link
         href={href}
         scroll={true}
         onClick={() => window.scrollTo(0, 0)}
-        className="
-          group
-          block relative z-10 no-underline
-          h-[400px] rounded-[16px] overflow-hidden
-          border-2 border-[#232323] bg-[#F2F1F0]
-          transition-[transform,background-color,border-color] duration-[250ms] ease-in-out
-          hover:translate-x-[8px] hover:translate-y-[8px]
-          hover:border-transparent
-          hover:bg-[var(--card-accent)]
-        "
+        className="flex flex-col no-underline rounded-[16px] overflow-hidden"
+        style={{ background: "#FFFFFF", padding: 16, gap: 24 }}
       >
-        {/* Text area */}
-        <div className="absolute top-[30px] left-[30px] right-[30px] z-10">
-          <p className="text-eyebrow text-[#363636] transition-colors duration-[250ms] group-hover:text-white">
-            {company}
-          </p>
-
-          <div className="relative mt-[10px]">
-            {/* Default heading — fades out on hover */}
-            <div
-              className="transition-opacity duration-[250ms] group-hover:opacity-0"
-              style={{ fontSize: 22, fontWeight: 500, color: "#232323", lineHeight: 1.4 }}
-            >
-              {heading}
-            </div>
-
-            {/* Hover description — fades in on hover, overlaid at same position */}
-            <div
-              className="absolute inset-0 opacity-0 transition-opacity duration-[250ms] group-hover:opacity-100"
-              style={{ fontSize: 22, fontWeight: 400, color: "white", lineHeight: 1.4 }}
-            >
-              {description}
-            </div>
+        {/* Video — top, fixed height */}
+        {videoSrc && (
+          <div style={{ position: "relative", height: 260, borderRadius: 4, overflow: "hidden", flexShrink: 0 }}>
+            {video}
           </div>
-        </div>
+        )}
 
-        {/* Thumbnail — lower-right, clipped by card overflow:hidden, fades out on hover */}
-        <div
-          className="absolute transition-opacity duration-[250ms] group-hover:opacity-0"
-          style={{
-            bottom: -24,
-            right: -24,
-            width: "68%",
-            height: 270,
-            borderRadius: 12,
-            overflow: "hidden",
-          }}
-        >
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            sizes="(max-width: 768px) calc(100vw - 128px), 453px"
-            style={{ objectFit: "cover", objectPosition: "top left" }}
-          />
+        {/* Text — bottom */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
+          <p style={{ marginTop: 8, fontSize: 22, fontWeight: 500, color: "#232323", lineHeight: 1.35 }}>
+            {heading}
+          </p>
         </div>
       </Link>
-    </div>
+    </motion.div>
   );
 }

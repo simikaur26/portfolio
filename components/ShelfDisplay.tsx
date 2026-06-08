@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, LayoutGroup, useReducedMotion } from "framer-motion";
 
-const ACCENT = "#993C1D";
+const ACCENT = "#232323";
 
 // ── Object SVGs ──────────────────────────────────────────────────────────────
 

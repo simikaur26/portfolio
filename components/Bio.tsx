@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-const ACCENT = "#993C1D";
-const HIGHLIGHT_BG = "rgba(153, 60, 29, 0.12)";
+const ACCENT = "#232323";
+const HIGHLIGHT_BG = "rgba(0, 0, 0, 0.06)";
 
 type Segment = { text: string; long: boolean };
 

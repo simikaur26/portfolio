@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import Image from "next/image";
 import ContextBlock from "@/components/ContextBlock";
 import CaseImage from "@/components/CaseImage";
 import SectionHeader from "@/components/SectionHeader";
@@ -23,24 +23,89 @@ const NAV_SECTIONS = [
   { id: "reflection",            label: "REFLECTION" },
 ];
 
+const TOOLS = [
+  { name: "Figma",  src: "/figma.svg" },
+  { name: "Gemini", src: "/gemini.svg" },
+];
+
 export default function Acorns() {
   return (
     <div
       style={{ "--case-accent": "var(--color-acorns)" } as React.CSSProperties}
     >
-      <div id="hero">
-        <Hero
-          title="Building trust during customer suspensions"
-          logoSrc="/acorns/acorns-logo.svg"
-          logoWidth={186}
-          logoHeight={40}
-          heroImage="/acorns/hero.svg"
-          heroImageWidth="38%"
-          heroImageTop="36%"
-          href="https://www.figma.com/proto/8bKON9jlaGGptYzg0OO1MW/Portfolio?page-id=60%3A26398&node-id=222-8246&viewport=1211%2C368%2C0.11&t=rdIp14feaTrHVmFd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=222%3A8246&show-proto-sidebar=1"
-          linkText="Click here for a live preview"
-          previewIcon="/figma.svg"
-        />
+      <div
+        id="hero"
+        style={{
+          position: "relative",
+          overflow: "visible",
+          paddingLeft: 64,
+          paddingRight: 64,
+          paddingTop: 80,
+          minHeight: "calc(100vh - var(--nav-height))",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", gap: 64, maxWidth: 930, margin: "0 auto", width: "100%" }}>
+          {/* Left column */}
+          <div style={{ flex: 1, paddingBottom: 64 }}>
+            <Image src="/acorns/acorns-logo.svg" alt="Acorns" width={186} height={40} priority style={{ width: 186, height: "auto" }} />
+            <h5 className="text-h5" style={{ color: "#232323", marginTop: 40, marginBottom: 36 }}>
+              Building trust during customer suspensions
+            </h5>
+            <a
+              href="https://www.figma.com/proto/8bKON9jlaGGptYzg0OO1MW/Portfolio?page-id=60%3A26398&node-id=222-8246&viewport=1211%2C368%2C0.11&t=rdIp14feaTrHVmFd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=222%3A8246&show-proto-sidebar=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-label-l2"
+              style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40, color: "#232323", textDecoration: "none" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/figma.svg" alt="" width={16} height={16} style={{ display: "block" }} />
+              Click here for a live preview
+            </a>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px", marginTop: 40 }}>
+              <div>
+                <p className="text-eyebrow">Timeline</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>Sep – Nov 2025</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Role</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>Product Designer</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Team</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>1 product designer, 1 PM</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Tech Stack</p>
+                <div className="flex gap-[8px] mt-2">
+                  {TOOLS.map(({ name, src }) => (
+                    <div key={name} className="group relative">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-[8px] bg-transparent group-hover:bg-[#f4f3ef] transition-all duration-200 ease-out group-hover:-translate-y-0.5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt={name} width={18} height={18} />
+                      </div>
+                      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded text-label-l3 bg-[#232323] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                        {name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right column — video */}
+          <div style={{ flex: "0 0 340px", alignSelf: "stretch", display: "flex", alignItems: "flex-end" }}>
+            <div style={{ width: "100%", height: 480, borderRadius: 16, overflow: "hidden", position: "relative" }}>
+              <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}>
+                <source src="/homepage/acorns-home.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
 
       <main className="pt-20 px-16">

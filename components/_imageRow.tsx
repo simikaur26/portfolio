@@ -7,6 +7,7 @@ export type ImageItem = {
   height: number;
   caption?: string;
   captionStyle?: "label" | "body";
+  borderRadius?: number;
 };
 
 export function ImageCell({
@@ -16,6 +17,7 @@ export function ImageCell({
   height,
   caption,
   captionStyle = "label",
+  borderRadius,
   sizes,
 }: ImageItem & { sizes: string }) {
   return (
@@ -27,6 +29,7 @@ export function ImageCell({
         height={height}
         className="w-full h-auto"
         sizes={sizes}
+        style={borderRadius ? { borderRadius } : undefined}
       />
       {caption && (
         <p

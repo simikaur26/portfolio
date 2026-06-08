@@ -1,4 +1,6 @@
-import Hero from "@/components/Hero";
+"use client";
+
+import Image from "next/image";
 import ContextBlock from "@/components/ContextBlock";
 import CaseImage from "@/components/CaseImage";
 import SectionHeader from "@/components/SectionHeader";
@@ -14,19 +16,116 @@ import OutcomeBanner from "@/components/OutcomeBanner";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import WorkSection from "@/components/WorkSection";
 
+const TOOLS = [
+  { name: "Figma",       src: "/figma.svg" },
+  { name: "ChatGPT",     src: "/chatgpt.svg" },
+  { name: "Claude Code", src: "/claude.svg" },
+  { name: "Granola",     src: "/granola.svg" },
+];
+
 export default function SampleCSI() {
   return (
     <div
       style={{ "--case-accent": "var(--color-navy)" } as React.CSSProperties}
     >
-      <div id="hero">
-        <Hero
-          title="Digitizing the Evidence Collection Process"
-          href="https://amulyavw02.github.io/samplecsi/"
-          heroImage="/sample-csi/hero.svg"
-          heroImageWidth="72%"
-          heroImageTop="46%"
-        />
+      {/* ── Custom two-column hero ─────────────────────────────────────────── */}
+      <div
+        id="hero"
+        style={{
+          position: "relative",
+          overflow: "visible",
+          paddingLeft: 64,
+          paddingRight: 64,
+          paddingTop: 80,
+          minHeight: "calc(100vh - var(--nav-height))",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-end",
+            gap: 64,
+            maxWidth: 930,
+            margin: "0 auto",
+            width: "100%",
+          }}
+        >
+          {/* Left column */}
+          <div style={{ flex: 1, paddingBottom: 64 }}>
+            <Image
+              src="/sample-csi/logo.svg"
+              alt="Sample CSI"
+              width={180}
+              height={48}
+              priority
+              style={{ width: 180, height: "auto" }}
+            />
+            <h5 className="text-h5" style={{ color: "#232323", marginTop: 40, marginBottom: 36 }}>
+              Designing software that helps police preserve evidence in court
+            </h5>
+            <a
+              href="https://amulyavw02.github.io/samplecsi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-label-l2"
+              style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40, color: "#232323", textDecoration: "none" }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "#232323", flexShrink: 0 }}>
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+              Click here for a live preview
+            </a>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px", marginTop: 40 }}>
+              <div>
+                <p className="text-eyebrow">Timeline</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>Jan – Apr 2026</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Role</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>Product Designer</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Team</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>5 students</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Tech Stack</p>
+                <div className="flex gap-[8px] mt-2">
+                  {TOOLS.map(({ name, src }) => (
+                    <div key={name} className="group relative">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-[8px] bg-transparent group-hover:bg-[#f4f3ef] transition-all duration-200 ease-out group-hover:-translate-y-0.5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt={name} width={18} height={18} />
+                      </div>
+                      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded text-label-l3 bg-[#232323] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                        {name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right column — video replacing the iPad mockup */}
+          <div style={{ flex: "0 0 340px", alignSelf: "stretch", display: "flex", alignItems: "flex-end" }}>
+            <div style={{ width: "100%", height: 480, borderRadius: 16, overflow: "hidden", position: "relative" }}>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              >
+                <source src="/homepage/samplecsi-home.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
 
       <main className="pt-20 px-16">
@@ -121,9 +220,9 @@ export default function SampleCSI() {
             </p>
             <ThreeUp
               images={[
-                { src: "/sample-csi/KD2-1.svg", alt: "A traditional table view", width: 290, height: 405, caption: "A traditional table view", captionStyle: "body" },
-                { src: "/sample-csi/KD2-2.svg", alt: "A folder/tree structure", width: 290, height: 405, caption: "A folder/tree structure", captionStyle: "body" },
-                { src: "/sample-csi/KD2-3.svg", alt: "A linked-card model", width: 290, height: 405, caption: "A linked-card model", captionStyle: "body" },
+                { src: "/sample-csi/KD2-1.svg", alt: "A traditional table view", width: 290, height: 405, caption: "A traditional table view", captionStyle: "body", borderRadius: 5 },
+                { src: "/sample-csi/KD2-2.svg", alt: "A folder/tree structure", width: 290, height: 405, caption: "A folder/tree structure", captionStyle: "body", borderRadius: 5 },
+                { src: "/sample-csi/KD2-3.svg", alt: "A linked-card model", width: 290, height: 405, caption: "A linked-card model", captionStyle: "body", borderRadius: 5 },
               ]}
             />
             <p className="text-body mt-6">

@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import GlobalCursor from "@/components/GlobalCursor";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <GlobalCursor />
         <ScrollToTop />
         <Nav />
         <div className="flex-1">

@@ -20,6 +20,12 @@ type Props = {
   logoWidth?: number;
   logoHeight?: number;
   previewIcon?: string;
+  /**
+   * Reveal effect: image starts below the fold (translateY 80px), rises into
+   * place at 50% scroll, then continues upward to -80px.
+   * overflow:hidden on the section clips the starting position.
+   */
+  revealEffect?: boolean;
 };
 
 export default function Hero({
@@ -35,17 +41,22 @@ export default function Hero({
   logoWidth,
   logoHeight,
   previewIcon,
+  revealEffect = false,
 }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Track scroll progress of the hero section itself
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  // As the hero scrolls out (0→1), images drift upward 0→-120px
+  // Standard parallax: drifts upward as section scrolls out
   const imageY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+
+  // Reveal effect: rises up into frame (80→0) then continues upward out (0→-80)
+  const revealY = useTransform(scrollYProgress, [0, 0.5, 1], [80, 0, -80]);
+
+  const activeY = revealEffect ? revealY : imageY;
 
   return (
     <section
@@ -115,12 +126,12 @@ export default function Hero({
       </div>
 
       {heroImage ? (
-        /* Centered hero image — top-anchored so start point is predictable; bottom clipped by overflow:hidden */
+        /* Centered hero image — top-anchored; bottom clipped by overflow:hidden */
         <div
           className="absolute left-1/2 -translate-x-1/2"
           style={{ top: heroImageTop, width: heroImageWidth }}
         >
-          <motion.div style={{ y: imageY }}>
+          <motion.div style={{ y: activeY }}>
             <Image
               src={heroImage}
               alt=""

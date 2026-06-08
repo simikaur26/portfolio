@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import Image from "next/image";
 import ContextBlock from "@/components/ContextBlock";
 import CaseImage from "@/components/CaseImage";
 import SectionHeader from "@/components/SectionHeader";
@@ -21,21 +21,80 @@ const NAV_SECTIONS = [
   { id: "reflection",          label: "REFLECTION" },
 ];
 
+const TOOLS = [
+  { name: "Figma",       src: "/figma.svg" },
+  { name: "Claude Code", src: "/claude.svg" },
+  { name: "ChatGPT",    src: "/chatgpt.svg" },
+  { name: "Granola",    src: "/granola.svg" },
+];
+
 export default function CompareFormulas() {
   return (
     <div
       style={{ "--case-accent": "var(--color-blue)" } as React.CSSProperties}
     >
-      <div id="hero">
-        <Hero
-          title="Compare Formulas: Rebuilding a Workflow for ElementAI"
-          logoSrc="/compare-formulas/pml-logo.svg"
-          logoWidth={186}
-          logoHeight={53}
-          heroImage="/compare-formulas/hero.svg"
-          heroImageWidth="76%"
-          heroImageTop="46%"
-        />
+      <div
+        id="hero"
+        style={{
+          position: "relative",
+          overflow: "visible",
+          paddingLeft: 64,
+          paddingRight: 64,
+          paddingTop: 80,
+          minHeight: "calc(100vh - var(--nav-height))",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", gap: 64, maxWidth: 930, margin: "0 auto", width: "100%" }}>
+          {/* Left column */}
+          <div style={{ flex: 1, paddingBottom: 64 }}>
+            <Image src="/compare-formulas/pml-logo.svg" alt="Prime Matter Labs" width={186} height={53} priority style={{ width: 186, height: "auto" }} />
+            <h5 className="text-h5" style={{ color: "#232323", marginTop: 40, marginBottom: 36 }}>
+              Compare Formulas: Rebuilding a Workflow for ElementAI
+            </h5>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px 48px", marginTop: 40 }}>
+              <div>
+                <p className="text-eyebrow">Timeline</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>May 2026</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Role</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>Product Designer</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Team</p>
+                <p className="text-label-l2" style={{ color: "#232323", marginTop: 4 }}>1 product designer, 2 engineers, 1 PM</p>
+              </div>
+              <div>
+                <p className="text-eyebrow">Tech Stack</p>
+                <div className="flex gap-[8px] mt-2">
+                  {TOOLS.map(({ name, src }) => (
+                    <div key={name} className="group relative">
+                      <div className="w-8 h-8 flex items-center justify-center rounded-[8px] bg-transparent group-hover:bg-[#f4f3ef] transition-all duration-200 ease-out group-hover:-translate-y-0.5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={src} alt={name} width={18} height={18} />
+                      </div>
+                      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded text-label-l3 bg-[#232323] text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                        {name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right column — video */}
+          <div style={{ flex: "0 0 420px", alignSelf: "stretch", display: "flex", alignItems: "flex-end" }}>
+            <div style={{ width: "100%", height: 420, borderRadius: 16, overflow: "hidden", position: "relative" }}>
+              <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}>
+                <source src="/homepage/pml-home.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
 
       <main className="pt-20 px-16">
@@ -57,6 +116,7 @@ I was the solo product designer, working with one PM and two engineers. I owned 
             alt="Compare Formulas overview — ElementAI formula comparison interface"
             width={930}
             height={365}
+            borderRadius={10}
           />
 
           <div id="the-problem" className="mt-20 scroll-mt-[50px]">
