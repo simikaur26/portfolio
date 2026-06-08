@@ -6,7 +6,7 @@ type Props = {
   tools?: { name: string; src: string }[];
 };
 
-export default function ContextBlock({ overview }: Pick<Props, "overview">) {
+export default function ContextBlock({ overview }: Props) {
   return (
     <div>
       <p className="text-eyebrow">Context</p>
