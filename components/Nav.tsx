@@ -76,7 +76,7 @@ export default function Nav() {
           About Me
         </Link>
         <a
-          href="https://drive.google.com/file/d/1tGuPd6VBd0IWIinT4WaANjatwF372FWI/view?usp=sharing"
+          href="https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="text-label-l3 hover:opacity-60 transition-opacity duration-200"
