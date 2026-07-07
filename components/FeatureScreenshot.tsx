@@ -26,7 +26,7 @@ export default function FeatureScreenshot({ blocks }: Props) {
             <p className="text-label-l2" style={{ color: "#232323" }}>
               {block.heading}
             </p>
-            <p className="text-body mt-3" style={{ color: "#232323" }}>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636", marginTop: 12, fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}>
               {block.text}
             </p>
           </div>

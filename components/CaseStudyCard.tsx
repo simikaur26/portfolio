@@ -50,20 +50,23 @@ export default function CaseStudyCard({
           href={href}
           scroll={true}
           onClick={() => window.scrollTo(0, 0)}
-          className="flex flex-row no-underline h-[315px] rounded-[16px] overflow-hidden"
+          className="flex flex-col md:flex-row no-underline rounded-[16px] overflow-hidden"
           style={{ background: "#FFFFFF", padding: 16, gap: 16 }}
         >
-          {/* Left — text, top-left aligned */}
-          <div style={{ width: "45%", flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-            <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
-            <p style={{ marginTop: 8, fontSize: 24, fontWeight: 500, color: "#232323", lineHeight: 1.35 }}>
-              {heading}
-            </p>
+          {/* Video — top on mobile, right on desktop */}
+          <div
+            className="relative order-first md:order-last md:flex-1 rounded-[4px] overflow-hidden"
+            style={{ height: 260 }}
+          >
+            {video}
           </div>
 
-          {/* Right — video fills remaining space */}
-          <div style={{ flex: 1, position: "relative", borderRadius: 4, overflow: "hidden" }}>
-            {video}
+          {/* Text — bottom on mobile, left on desktop */}
+          <div className="order-last md:order-first md:w-[45%] md:flex-shrink-0 flex flex-col items-start justify-start">
+            <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
+            <p style={{ marginTop: 8, fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 24, color: "#232323", lineHeight: 1.35 }}>
+              {heading}
+            </p>
           </div>
         </Link>
       </motion.div>
@@ -94,7 +97,7 @@ export default function CaseStudyCard({
         {/* Text — bottom */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
-          <p style={{ marginTop: 8, fontSize: 22, fontWeight: 500, color: "#232323", lineHeight: 1.35 }}>
+          <p style={{ marginTop: 8, fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 22, color: "#232323", lineHeight: 1.35 }}>
             {heading}
           </p>
         </div>

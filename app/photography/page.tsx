@@ -22,7 +22,7 @@ export default function Photography() {
   }, [active, close]);
 
   return (
-    <main className="py-20 px-16">
+    <main className="py-20 mx-6 min-[480px]:mx-12 md:mx-[220px]">
       <div className="max-w-[930px] mx-auto">
         <h3 className="text-h3" style={{ color: "#232323" }}>
           photos i&apos;ve taken over the years

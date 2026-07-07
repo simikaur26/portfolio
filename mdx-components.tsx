@@ -15,6 +15,7 @@ import CaseVideo from "@/components/CaseVideo";
 import DesignChallenge from "@/components/DesignChallenge";
 import GroupedPoints from "@/components/GroupedPoints";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
+import ViewToggle from "@/components/ViewToggle";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import FigmaEmbed from "@/components/FigmaEmbed";
 
@@ -44,6 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DesignChallenge,
     GroupedPoints,
     FeatureScreenshot,
+    ViewToggle,
     CaseStudyCard,
     FigmaEmbed,
   };

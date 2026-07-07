@@ -2,13 +2,14 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 
 const CARDS = [
   {
-    company: "ACORNS",
-    heading: "Building Trust during Customer Suspensions At Acorns",
-    description: "Redesigned Acorns' suspension-resolution experience to reduce customer anxiety, guide users through verification more clearly, and rebuild trust during high-stress account lockouts.",
-    videoSrc: "/homepage/acorns-home.mp4",
+    company: "PRIME MATTER LABS",
+    heading: "Compare Formulas: Rebuilding a Workflow for ElementAI",
+    description: "Helping chemists compare, edit, and trust dense formula data without leaving their workflow.",
+    videoSrc: "/homepage/pml-home.mp4",
+    videoPosition: "60% center",
     layout: "horizontal" as const,
     fullWidth: true,
-    href: "/acorns",
+    href: "/compare-formulas",
   },
   {
     company: "SAMPLESERVE",
@@ -19,37 +20,34 @@ const CARDS = [
     href: "/sample-csi",
   },
   {
-    company: "PRIME MATTER LABS",
-    heading: "Compare Formulas: Rebuilding a Workflow for ElementAI",
-    description: "Helping chemists compare, edit, and trust dense formula data without leaving their workflow.",
-    videoSrc: "/homepage/pml-home.mp4",
-    videoPosition: "60% center",
+    company: "ACORNS",
+    heading: "Building Trust during Customer Suspensions At Acorns",
+    description: "Redesigned Acorns' suspension-resolution experience to reduce customer anxiety, guide users through verification more clearly, and rebuild trust during high-stress account lockouts.",
+    videoSrc: "/homepage/acorns-home.mp4",
     layout: "vertical" as const,
-    href: "/compare-formulas",
+    href: "/acorns",
   },
 ];
 
 export default function WorkSection({ exclude }: { exclude?: string }) {
   const cards = (exclude ? CARDS.filter((c) => c.href !== exclude) : CARDS).map((c) =>
-    exclude && c.href === "/acorns" ? { ...c, layout: "vertical" as const, fullWidth: false } : c
+    exclude && c.href === "/compare-formulas" ? { ...c, layout: "vertical" as const, fullWidth: false } : c
   );
 
   return (
-    <section id="work" className="py-20 px-16">
-      <div className="max-w-[930px] mx-auto">
-        {!exclude && (
-          <p className="text-eyebrow" style={{ color: "#363636" }}>selected work</p>
-        )}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 ${!exclude ? "mt-8" : ""}`}
-          style={{ gap: 24 }}
-        >
-          {cards.map((card) => (
-            <div key={card.href} className={card.fullWidth ? "md:col-span-2" : ""}>
-              <CaseStudyCard {...card} />
-            </div>
-          ))}
-        </div>
+    <section id="work" className="py-20 mx-6 min-[480px]:mx-12 md:mx-[220px]">
+      {!exclude && (
+        <p className="text-eyebrow" style={{ color: "#363636" }}>selected work</p>
+      )}
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 ${!exclude ? "mt-8" : ""}`}
+        style={{ gap: 24 }}
+      >
+        {cards.map((card) => (
+          <div key={card.href} className={card.fullWidth ? "md:col-span-2" : ""}>
+            <CaseStudyCard {...card} />
+          </div>
+        ))}
       </div>
     </section>
   );
