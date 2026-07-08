@@ -109,21 +109,28 @@ export default function HomeIntro() {
     >
       <HeroCursor containerRef={sectionRef} />
 
-      {/* Eyebrow */}
-      <motion.p
+      {/* Status tag */}
+      <motion.span
         {...fade(0)}
         style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          marginBottom: 24,
+          padding: "4px 12px",
+          borderRadius: 999,
+          border: "1px solid #993C1D",
           fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-          fontSize: 14,
+          fontSize: 12,
           fontWeight: 400,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "#888780",
-          marginBottom: 20,
+          color: "#993C1D",
+          letterSpacing: "0.02em",
+          alignSelf: "flex-start",
         }}
       >
-        Simi, product designer
-      </motion.p>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#993C1D", display: "inline-block" }} />
+        open to full time roles
+      </motion.span>
 
       {/* Headline */}
       <motion.h1

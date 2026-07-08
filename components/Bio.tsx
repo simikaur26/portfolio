@@ -146,29 +146,47 @@ export default function Bio() {
 
         {/* Right: badges + bio text */}
         <div style={{ flex: "60 60 0", minWidth: 0 }}>
-          {/* Mode badges */}
-          <div className="flex items-center gap-2 mb-8">
-            {(["short", "long"] as const).map((m) => {
-              const active = mode === m;
-              return (
-                <button
-                  key={m}
-                  onClick={() => setMode(m)}
-                  className="text-label-l3"
-                  style={{
-                    padding: "4px 14px",
-                    borderRadius: 999,
-                    border: `1.5px solid ${ACCENT}`,
-                    backgroundColor: active ? ACCENT : "transparent",
-                    color: active ? "white" : ACCENT,
-                    cursor: "pointer",
-                    transition: "background-color 150ms ease, color 150ms ease",
-                  }}
-                >
-                  {m}
-                </button>
-              );
-            })}
+          {/* Mode toggle */}
+          <div className="flex items-center gap-3 mb-8">
+            <button
+              onClick={() => setMode("short")}
+              style={{
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontSize: 13,
+                fontWeight: 400,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                color: mode === "short" ? "#232323" : "#888780",
+                background: "none",
+                border: "none",
+                borderBottom: mode === "short" ? "1px solid #232323" : "1px solid transparent",
+                padding: "0 0 2px",
+                cursor: "pointer",
+                transition: "color 150ms ease, border-color 150ms ease",
+              }}
+            >
+              short
+            </button>
+            <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 13, color: "#BBBDBC" }}>/</span>
+            <button
+              onClick={() => setMode("long")}
+              style={{
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                fontSize: 13,
+                fontWeight: 400,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                color: mode === "long" ? "#232323" : "#888780",
+                background: "none",
+                border: "none",
+                borderBottom: mode === "long" ? "1px solid #232323" : "1px solid transparent",
+                padding: "0 0 2px",
+                cursor: "pointer",
+                transition: "color 150ms ease, border-color 150ms ease",
+              }}
+            >
+              long
+            </button>
           </div>
 
           {/* Bio paragraphs */}

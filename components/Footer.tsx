@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 const EMAIL = "simikaurb26@gmail.com";
+const HEL = "Helvetica Neue, Helvetica, Arial, sans-serif";
+const CAN = "'CanelaText', serif";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -16,68 +17,104 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      className="mx-6 min-[480px]:mx-12 md:mx-[220px] py-16"
-    >
-      {/* CTA */}
-      <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>
-        Get in touch
-      </p>
-      <p
-        className="text-[36px] md:text-[52px]"
-        style={{
-          fontFamily: "'CanelaText', serif",
-          fontWeight: 300,
-          lineHeight: 1.15,
-          color: "#232323",
-          marginTop: 12,
-          maxWidth: 600,
-        }}
-      >
-        Let&apos;s make something.
-      </p>
-      <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", marginTop: 16, maxWidth: 460 }}>
-        I&apos;m always open to new opportunities, collaborations, or just a good conversation.
-      </p>
+    <footer className="mx-6 min-[480px]:mx-12 md:mx-[220px] py-16">
 
-      <button
-        onClick={handleCopy}
-        style={{
-          marginTop: 28,
-          display: "inline-block",
-          border: "1px solid #232323",
-          borderRadius: 6,
-          padding: "8px 24px",
-          fontSize: 15,
-          fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-          fontWeight: 400,
-          color: "#232323",
-          background: "transparent",
-          cursor: "pointer",
-          transition: "background 150ms ease, color 150ms ease",
-        }}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.background = "#232323";
-          (e.currentTarget as HTMLElement).style.color = "#fff";
-        }}
-        onMouseLeave={e => {
-          (e.currentTarget as HTMLElement).style.background = "transparent";
-          (e.currentTarget as HTMLElement).style.color = "#232323";
-        }}
-      >
-        {copied ? "copied!" : "copy my email"}
-      </button>
+      {/* CTA — two columns */}
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 48 }}>
 
-      {/* Bottom */}
+        {/* Left: text */}
+        <div>
+          <p style={{ fontFamily: CAN, fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>
+            Get in touch
+          </p>
+          <p
+            className="text-[36px] md:text-[52px]"
+            style={{
+              fontFamily: CAN,
+              fontWeight: 300,
+              lineHeight: 1.15,
+              color: "#232323",
+              marginTop: 12,
+              maxWidth: 560,
+            }}
+          >
+            Still looking for the next blank page.
+          </p>
+          <p style={{
+            fontSize: 16,
+            lineHeight: 1.6,
+            color: "#363636",
+            fontFamily: HEL,
+            marginTop: 16,
+            maxWidth: 440,
+          }}>
+            I&apos;m always open to new opportunities, collaborations, or just a good conversation.
+          </p>
+          <p style={{
+            fontSize: 14,
+            lineHeight: 1.5,
+            color: "#993C1D",
+            fontFamily: HEL,
+            marginTop: 8,
+          }}>
+            Currently open to full-time roles in NYC or remote.
+          </p>
+        </div>
+
+        {/* Right: links */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 16, flexShrink: 0 }}>
+          <a
+            href="https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontFamily: HEL, fontSize: 15, color: "#232323", textDecoration: "underline", textUnderlineOffset: "3px" }}
+          >
+            Resume
+          </a>
+          <a
+            href="https://www.linkedin.com/in/simikaur/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontFamily: HEL, fontSize: 15, color: "#232323", textDecoration: "underline", textUnderlineOffset: "3px" }}
+          >
+            LinkedIn
+          </a>
+          <button
+            onClick={handleCopy}
+            style={{
+              fontFamily: HEL,
+              fontSize: 13,
+              fontWeight: 400,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              color: "#232323",
+              background: "none",
+              border: "none",
+              borderBottom: "1px solid #232323",
+              padding: "0 0 2px",
+              cursor: "pointer",
+              transition: "color 150ms ease, border-color 150ms ease",
+            }}
+          >
+            {copied ? "copied!" : "copy my email"}
+          </button>
+        </div>
+
+      </div>
+
+      {/* Bottom bar */}
       <div
         className="flex items-center justify-between mt-16 pt-6"
         style={{ borderTop: "1px solid #BBBDBC" }}
       >
-        <Image src="/logo.svg" alt="SK" width={40} height={32} />
-        <p style={{ fontSize: 13, color: "#BBBDBC", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}>
+        <p style={{ fontFamily: CAN, fontWeight: 300, fontSize: 18, color: "#232323" }}>
+          Simi Kaur
+        </p>
+        <p style={{ fontSize: 13, color: "#BBBDBC", fontFamily: HEL }}>
           designed by me, vibecoded with claude. we both did our best
         </p>
       </div>
+
     </footer>
   );
 }

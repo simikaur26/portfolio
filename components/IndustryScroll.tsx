@@ -31,10 +31,10 @@ export default function IndustryScroll() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // 5 equal slots: words at 0–0.8, breathing room at 0.8–1.0
-    setWordIndex(Math.min(Math.floor(latest * 5), 3));
-    // payoff appears once manufacturing has fully settled (slot 3 = 0.6–0.8, show at 70%)
-    setShowPayoff(latest >= 0.72);
+    // 4 words cycling through 0–0.55, each word gets ~14% of scroll range
+    setWordIndex(Math.min(Math.floor(latest / 0.14), 3));
+    // payoff appears at 60%, giving it 40% of pinned range to breathe
+    setShowPayoff(latest >= 0.60);
   });
 
   /* ── Reduced motion: static final state ─────────────────────────────── */
@@ -57,7 +57,7 @@ export default function IndustryScroll() {
   }
 
   return (
-    <div ref={outerRef} style={{ height: "425vh", position: "relative" }}>
+    <div ref={outerRef} style={{ height: "560vh", position: "relative" }}>
 
       {/* Sticky viewport */}
       <div
@@ -71,13 +71,13 @@ export default function IndustryScroll() {
 
         {/* Cycling word — height 1.2em clips vertical slide */}
         <div style={{ position: "relative", overflow: "hidden", height: "1.2em", width: "100%" }}>
-          <AnimatePresence initial={false}>
+          <AnimatePresence initial={false} mode="popLayout">
             <motion.p
               key={wordIndex}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
-              transition={{ duration: 0.5, ease: EASE }}
+              transition={{ duration: 0.45, ease: EASE }}
               style={{ ...TEXT_BASE, color: "#993C1D", position: "absolute", top: 0, left: 0, width: "100%" }}
             >
               {WORDS[wordIndex]}.
@@ -85,27 +85,22 @@ export default function IndustryScroll() {
           </AnimatePresence>
         </div>
 
-        {/* Payoff line — fades in once manufacturing has settled */}
-        <AnimatePresence>
-          {showPayoff && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.65, ease: "easeOut", delay: 0.2 }}
-              style={{
-                marginTop: 32,
-                fontSize: 16,
-                lineHeight: 1.6,
-                color: "#363636",
-                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-                maxWidth: 480,
-              }}
-            >
-              I go where I don&apos;t know the rules yet. That&apos;s the whole appeal.
-            </motion.p>
-          )}
-        </AnimatePresence>
+        {/* Payoff line — fades in after manufacturing, no exit needed */}
+        <motion.p
+          animate={{ opacity: showPayoff ? 1 : 0, y: showPayoff ? 0 : 8 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          style={{
+            marginTop: 32,
+            fontSize: 16,
+            lineHeight: 1.6,
+            color: "#363636",
+            fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+            maxWidth: 480,
+            pointerEvents: showPayoff ? "auto" : "none",
+          }}
+        >
+          I go where I don&apos;t know the rules yet. That&apos;s the whole appeal.
+        </motion.p>
       </div>
     </div>
   );
