@@ -10,7 +10,6 @@ import GroupedPoints from "@/components/GroupedPoints";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
 import TwoUp from "@/components/TwoUp";
 import FigmaEmbed from "@/components/FigmaEmbed";
-import WorkSection from "@/components/WorkSection";
 
 const TOOLS = [
   { name: "Figma",  src: "/figma.svg" },
@@ -74,6 +73,20 @@ export default function Acorns() {
         >
           Building Trust During Customer Suspensions
         </p>
+
+        {/* Figma link */}
+        <div style={{ marginTop: 16, display: "flex", justifyContent: "center" }}>
+          <a
+            href="https://www.figma.com/proto/8bKON9jlaGGptYzg0OO1MW/Portfolio?page-id=60%3A26398&node-id=222-8246&viewport=1211%2C368%2C0.11&t=rdIp14feaTrHVmFd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=222%3A8246&show-proto-sidebar=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#888780", textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/figma.svg" alt="" width={14} height={14} style={{ display: "block" }} />
+            View live prototype
+          </a>
+        </div>
 
         <div style={{ marginTop: 24, borderRadius: 16, overflow: "hidden", aspectRatio: "16/9" }}>
           <video
@@ -166,19 +179,6 @@ export default function Acorns() {
           </div>
         </motion.div>
 
-        {/* Figma link */}
-        <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-          <a
-            href="https://www.figma.com/proto/8bKON9jlaGGptYzg0OO1MW/Portfolio?page-id=60%3A26398&node-id=222-8246&viewport=1211%2C368%2C0.11&t=rdIp14feaTrHVmFd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=222%3A8246&show-proto-sidebar=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#888780", textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/figma.svg" alt="" width={14} height={14} style={{ display: "block" }} />
-            View live prototype
-          </a>
-        </div>
       </div>
 
       {/* ── The Problem ───────────────────────────────────────────────────── */}
@@ -235,7 +235,7 @@ export default function Acorns() {
 
         {/* CONSTRAINTS */}
         <div id="constraints" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="CONSTRAINTS" heading="Making complexity feel simple." canela />
+          <SectionHeader eyebrow="Constraints" heading="Making complexity feel simple." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             Different suspension types needed different combinations of IDs, bank statements, written explanations, acknowledgements, and manual review. But the old uploader flattened all of those into the same generic experience. The challenge was reducing confusion for customers without oversimplifying the compliance complexity behind the scenes.
           </p>
@@ -243,7 +243,7 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 1 */}
         <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 1" heading="Replace the generic uploader with a guided experience." canela />
+          <SectionHeader eyebrow="Key design decision 1" heading="Replace the generic uploader with a guided experience." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             The first big shift was moving away from a static uploader toward a more dynamic flow. Instead of showing every customer the same upload screen, the experience adapted based on suspension type.
           </p>
@@ -304,7 +304,7 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 2 */}
         <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 2" heading="Progressive disclosure helped reduce anxiety." canela />
+          <SectionHeader eyebrow="Key design decision 2" heading="Progressive disclosure helped reduce anxiety." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             Early versions surfaced every requirement immediately: upload documents, explain transactions, acknowledge terms, wait for review. It technically worked, but it felt stressful. So I started exploring a step-by-step flow that guided customers through one task at a time. Instead of presenting a wall of requirements, the experience focused on the next thing the customer needed to do.
           </p>
@@ -335,7 +335,7 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 3 */}
         <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 3" heading="Account access, even during suspension." canela />
+          <SectionHeader eyebrow="Key design decision 3" heading="Account access, even during suspension." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             One insight kept coming up while working through the flows: customers were panicking because they couldn&apos;t see their money. The original experience basically hard-locked users out of the product. But that made the situation feel even more alarming. So instead of fully blocking access, I designed a read-only account state. Customers could still:
           </p>
@@ -392,21 +392,31 @@ export default function Acorns() {
 
         {/* REFLECTION */}
         <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="REFLECTION" heading="I learned that trust breaks fast when users lose visibility." canela />
+          <SectionHeader eyebrow="Reflection" heading="I learned that trust breaks fast when users lose visibility." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             This project changed how I think about high-stress financial workflows. At first, I approached it like a form redesign problem. But the deeper issue was emotional. Customers needed clarity and reassurance just as much as they needed functionality. The biggest lesson was realizing that reducing friction doesn&apos;t always mean removing steps — sometimes it just means helping people understand where they are, what&apos;s happening, and what comes next. If I revisited the project, I&apos;d spend more time testing how different suspension types changed pacing and trust needs across the flow.
           </p>
         </div>
 
-        <p
-          className="mt-24 text-[22px] md:text-[28px]"
-          style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.4, color: "#232323" }}
-        >
-          Thanks for reading :) See some more work below
-        </p>
+        <div className="mt-24 flex justify-between">
+          <a
+            href="/sample-csi"
+            className="group inline-flex items-center gap-2"
+            style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          >
+            <span className="inline-block transition-transform duration-200 group-hover:rotate-45">←</span>
+            Previous case study
+          </a>
+          <a
+            href="/acorns-growth"
+            className="group inline-flex items-center gap-2"
+            style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          >
+            Next case study
+            <span className="inline-block transition-transform duration-200 group-hover:-rotate-45">→</span>
+          </a>
+        </div>
       </main>
-
-      <WorkSection exclude="/acorns" />
     </div>
   );
 }

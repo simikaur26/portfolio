@@ -8,7 +8,6 @@ import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/Button";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
 import ViewToggle from "@/components/ViewToggle";
-import WorkSection from "@/components/WorkSection";
 
 const TOOLS = [
   { name: "Figma",       src: "/figma.svg" },
@@ -282,7 +281,7 @@ export default function CompareFormulas() {
       <main className="mx-6 min-[480px]:mx-12 md:mx-[220px] pt-20">
 
           <div id="constraints" className="mt-20 scroll-mt-[50px]">
-            <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, textTransform: "uppercase", letterSpacing: "0.18em", color: "#888780" }}>Constraints</p>
+            <p className="text-eyebrow">Constraints</p>
             <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 36, color: "#232323", marginTop: 12, lineHeight: 1.25 }}>
               Designing for inconsistency became the hardest constraint.
             </p>
@@ -344,7 +343,7 @@ export default function CompareFormulas() {
 
           <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
-              eyebrow="KEY DESIGN DECISION 1"
+              eyebrow="Key design decision 1"
               heading="Split the workflow instead of forcing one view to do everything"
               canela
             />
@@ -356,7 +355,7 @@ export default function CompareFormulas() {
                 {
                   key: "list",
                   label: "List view",
-                  eyebrow: "LIST VIEW — CHEMISTS",
+                  eyebrow: "List view — Chemists",
                   description: "Allows chemists to easily scan and compare ingredient amounts",
                   imageSrc: "/compare-formulas/KD1-2.svg",
                   imageAlt: "List view for chemists",
@@ -366,7 +365,7 @@ export default function CompareFormulas() {
                 {
                   key: "sequential",
                   label: "Sequential view",
-                  eyebrow: "SEQUENTIAL VIEW — PROCESS ENGINEERS",
+                  eyebrow: "Sequential view — Process Engineers",
                   description: "Allows engineers to view formulas in phases for easy formula structure scanning",
                   imageSrc: "/compare-formulas/KD1-1.svg",
                   imageAlt: "Sequential view for process engineers",
@@ -382,7 +381,7 @@ export default function CompareFormulas() {
 
           <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
-              eyebrow="KEY DESIGN DECISION 2"
+              eyebrow="Key design decision 2"
               heading="Turn comparison into action"
               canela
             />
@@ -407,7 +406,7 @@ export default function CompareFormulas() {
 
           <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
             <SectionHeader
-              eyebrow="KEY DESIGN DECISION 3"
+              eyebrow="Key design decision 3"
               heading="Small visual cues made dense formula data easier to trust."
               canela
             />
@@ -461,7 +460,7 @@ export default function CompareFormulas() {
 
           <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
             <SectionHeader
-              eyebrow="REFLECTION"
+              eyebrow="Reflection"
               heading="I learned that migration work is really behavior-change work."
               canela
             />
@@ -470,14 +469,25 @@ export default function CompareFormulas() {
             </p>
           </div>
 
-          <p
-            className="mt-24 text-[22px] md:text-[28px]"
-            style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.4, color: "#232323" }}
-          >
-            Thanks for reading :) See some more work below
-          </p>
+          <div className="mt-24 flex justify-between">
+            <a
+              href="/acorns-growth"
+              className="group inline-flex items-center gap-2"
+              style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+            >
+              <span className="inline-block transition-transform duration-200 group-hover:rotate-45">←</span>
+              Previous case study
+            </a>
+            <a
+              href="/sample-csi"
+              className="group inline-flex items-center gap-2"
+              style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+            >
+              Next case study
+              <span className="inline-block transition-transform duration-200 group-hover:-rotate-45">→</span>
+            </a>
+          </div>
       </main>
-      <WorkSection exclude="/compare-formulas" />
 
     </div>
   );

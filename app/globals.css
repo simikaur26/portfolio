@@ -140,12 +140,11 @@ html {
   /* Section labels: uppercase, letter-spacing 18% */
 
   .text-eyebrow {
+    font-family: 'CanelaText', serif !important;
     font-size: 16px;
     line-height: 20.2px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #888780;
+    font-weight: 300;
+    color: #A1A1A1;
   }
 
   /* ─── Button text style ────────────────────────────────────────────── */

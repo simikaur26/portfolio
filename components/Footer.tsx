@@ -18,7 +18,6 @@ export default function Footer() {
   return (
     <footer
       className="mx-6 min-[480px]:mx-12 md:mx-[220px] py-16"
-      style={{ borderTop: "1px solid #BBBDBC" }}
     >
       {/* CTA */}
       <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>

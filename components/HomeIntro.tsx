@@ -2,15 +2,14 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
 // ── Typewriter ───────────────────────────────────────────────────────────────
 
 const PHRASES = [
-  "ambiguous environments.",
-  "figuring out the problem.",
-  "building 0→1 products.",
-  "earning user trust.",
+  "clarity.",
+  "confidence.",
+  "efficiency.",
+  "action.",
 ];
 
 function useTypewriter(phrases: string[], skip: boolean) {
@@ -106,7 +105,7 @@ export default function HomeIntro() {
       data-hero
       ref={sectionRef}
       className="flex flex-col justify-center px-6 min-[480px]:px-12 md:px-[220px]"
-      style={{ height: "calc(100vh - var(--nav-height))", position: "relative", cursor: "none" }}
+      style={{ height: "75vh", position: "relative", cursor: "none" }}
     >
       <HeroCursor containerRef={sectionRef} />
 
@@ -129,41 +128,29 @@ export default function HomeIntro() {
       {/* Headline */}
       <motion.h1
         {...fade(0.15)}
-        className="text-[36px] min-[480px]:text-[48px] md:text-[60px]"
+        className="text-[30px] min-[480px]:text-[40px] md:text-[50px] md:whitespace-nowrap"
         style={{
           fontFamily: "'CanelaText', serif",
           fontWeight: 300,
           lineHeight: 1.2,
           color: "#232323",
           letterSpacing: "-0.01em",
-          maxWidth: 720,
         }}
       >
-        I thrive in{" "}
+        Turning complexity into{" "}
         <span style={{ color: "#993C1D" }}>
-          {displayed}
-          {/* blinking cursor */}
-          <motion.span
-            animate={{ opacity: phase === "pausing" ? [1, 0, 1] : 1 }}
-            transition={phase === "pausing" ? { duration: 0.9, repeat: Infinity } : { duration: 0 }}
-            style={{ display: "inline-block", marginLeft: 2, fontStyle: "normal" }}
-          >
-            |
-          </motion.span>
-        </span>
+            {displayed}
+            {/* blinking cursor */}
+            <motion.span
+              animate={{ opacity: phase === "pausing" ? [1, 0, 1] : 1 }}
+              transition={phase === "pausing" ? { duration: 0.9, repeat: Infinity } : { duration: 0 }}
+              style={{ display: "inline-block", marginLeft: 2, fontStyle: "normal" }}
+            >
+              |
+            </motion.span>
+          </span>
       </motion.h1>
 
-      {/* Chevron */}
-      <motion.div
-        style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)" }}
-        initial={skip ? {} : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: skip ? 0 : 1 }}
-      >
-        <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
-          <ChevronDown size={16} strokeWidth={1.5} color="#363636" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

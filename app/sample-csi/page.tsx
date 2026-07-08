@@ -12,7 +12,6 @@ import TwoUp from "@/components/TwoUp";
 import ThreeUp from "@/components/ThreeUp";
 import FigmaEmbed from "@/components/FigmaEmbed";
 import RefinementBlock from "@/components/RefinementBlock";
-import WorkSection from "@/components/WorkSection";
 
 const TOOLS = [
   { name: "Figma",       src: "/figma.svg" },
@@ -78,6 +77,21 @@ export default function SampleCSI() {
         >
           Designing Software That Helps Police Preserve Evidence in Court
         </p>
+
+        {/* Live preview link */}
+        <div style={{ marginTop: 16, display: "flex", justifyContent: "center" }}>
+          <a
+            href="https://amulyavw02.github.io/samplecsi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#888780", textDecoration: "none" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "#888780", flexShrink: 0 }}>
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            View live prototype
+          </a>
+        </div>
 
         <div style={{ marginTop: 24, borderRadius: 16, overflow: "hidden", aspectRatio: "16/9" }}>
           <video
@@ -170,20 +184,6 @@ export default function SampleCSI() {
           </div>
         </motion.div>
 
-        {/* Live preview link */}
-        <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-          <a
-            href="https://amulyavw02.github.io/samplecsi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#888780", textDecoration: "none" }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "#888780", flexShrink: 0 }}>
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-            View live prototype
-          </a>
-        </div>
       </div>
 
       {/* ── The Problem ───────────────────────────────────────────────────── */}
@@ -240,7 +240,7 @@ export default function SampleCSI() {
 
         {/* CONSTRAINTS */}
         <div id="constraints" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="CONSTRAINTS" heading="Designing for inconsistency became the hardest constraint." canela />
+          <SectionHeader eyebrow="Constraints" heading="Designing for inconsistency became the hardest constraint." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             One of the biggest challenges was realizing there wasn&apos;t a single workflow to design around. Different agencies documented evidence differently, used different terminology, and prioritized different information. We explored more standardized flows, but the more artifacts we reviewed, the more limiting that approach felt. So we made a different tradeoff: build a system that felt flexible without losing structure.
           </p>
@@ -263,7 +263,7 @@ export default function SampleCSI() {
 
         {/* KEY DESIGN DECISION 1 */}
         <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 1" heading="AI as guardrails, not automation." canela />
+          <SectionHeader eyebrow="Key design decision 1" heading="AI as guardrails, not automation." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             As we learned more about evidence collection workflows, we kept running into the same issue: officers needed to document information quickly, but missing even a small detail could create problems later. We explored more automated documentation flows early on, but the deeper we got into the problem space, the less comfortable full automation felt. In a workflow built around accountability and chain of custody, fully AI-generated reports felt more likely to create distrust than confidence.
           </p>
@@ -293,7 +293,7 @@ export default function SampleCSI() {
 
         {/* KEY DESIGN DECISION 2 */}
         <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 2" heading="The biggest pivot came from something we didn't hear in interviews." canela />
+          <SectionHeader eyebrow="Key design decision 2" heading="The biggest pivot came from something we didn't hear in interviews." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             One of our most important insights came late in the process. During synthesis, we realized evidence rarely exists in isolation — a blood sample connects to a weapon, a fingerprint to a broken object. None of our interviews explicitly revealed this; we uncovered it through artifact analysis and workflow mapping. Once we saw the pattern, we redesigned the case summary experience to support parent-child evidence relationships. We explored several directions:
           </p>
@@ -317,7 +317,7 @@ export default function SampleCSI() {
 
         {/* KEY DESIGN DECISION 3 */}
         <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="KEY DESIGN DECISION 3" heading="Usability testing exposed where clarity mattered more than features." canela />
+          <SectionHeader eyebrow="Key design decision 3" heading="Usability testing exposed where clarity mattered more than features." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             There was one recurring issue that came up in usability testing: language. Terms that felt obvious to us weren&apos;t obvious to officers. We made a series of targeted refinements that improved comprehension and flow. One participant summed it up well: &apos;This would make our work faster.&apos;
           </p>
@@ -387,7 +387,7 @@ export default function SampleCSI() {
 
         {/* USING AI */}
         <div id="using-ai" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="USING AI" heading="AI also became part of how we built SampleCSI." canela />
+          <SectionHeader eyebrow="Using AI" heading="AI also became part of how we built SampleCSI." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             There was something a little meta about this project: we were designing an AI-assisted tool while actively using AI tools ourselves. That wasn&apos;t the original plan, but it became one of the more interesting parts of the process.
           </p>
@@ -448,22 +448,33 @@ export default function SampleCSI() {
 
         {/* REFLECTION */}
         <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="REFLECTION" heading="I learned that workflow design isn't really about screens." canela />
+          <SectionHeader eyebrow="Reflection" heading="I learned that workflow design isn't really about screens." canela />
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             It&apos;s about understanding how people make decisions under pressure. If I revisited this project, I&apos;d spend more time validating edge cases earlier, especially around evidence relationships and multi-agency workflows. Our biggest pivot happened relatively late, and earlier questioning could have surfaced it sooner. This project also changed how I think about usability testing — watching users hesitate in real time taught me that clarity often matters more than feature depth, especially in high-stakes environments where confidence and speed are tightly connected.
           </p>
         </div>
 
-        <p
-          className="mt-24 text-[22px] md:text-[28px]"
-          style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.4, color: "#232323" }}
-        >
-          Thanks for reading :) See some more work below
-        </p>
+        <div className="mt-24 flex justify-between">
+          <a
+            href="/compare-formulas"
+            className="group inline-flex items-center gap-2"
+            style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          >
+            <span className="inline-block transition-transform duration-200 group-hover:rotate-45">←</span>
+            Previous case study
+          </a>
+          <a
+            href="/acorns"
+            className="group inline-flex items-center gap-2"
+            style={{ background: "#232323", color: "#ffffff", borderRadius: 999, padding: "10px 20px", fontSize: 15.6, textDecoration: "none", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+          >
+            Next case study
+            <span className="inline-block transition-transform duration-200 group-hover:-rotate-45">→</span>
+          </a>
+        </div>
       </main>
 
       <Script src="https://player.vimeo.com/api/player.js" strategy="afterInteractive" />
-      <WorkSection exclude="/sample-csi" />
     </div>
   );
 }

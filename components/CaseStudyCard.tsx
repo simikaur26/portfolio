@@ -63,7 +63,7 @@ export default function CaseStudyCard({
 
           {/* Text — bottom on mobile, left on desktop */}
           <div className="order-last md:order-first md:w-[45%] md:flex-shrink-0 flex flex-col items-start justify-start">
-            <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
+            <p className="text-eyebrow" style={{ color: "#888780", fontSize: 12 }}>{company}</p>
             <p style={{ marginTop: 8, fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 24, color: "#232323", lineHeight: 1.35 }}>
               {heading}
             </p>
@@ -96,7 +96,7 @@ export default function CaseStudyCard({
 
         {/* Text — bottom */}
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <p className="text-eyebrow" style={{ color: "#888780" }}>{company}</p>
+          <p className="text-eyebrow" style={{ color: "#888780", fontSize: 12 }}>{company}</p>
           <p style={{ marginTop: 8, fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 22, color: "#232323", lineHeight: 1.35 }}>
             {heading}
           </p>

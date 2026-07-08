@@ -117,9 +117,12 @@ export default function Bio() {
   return (
     <div>
       {/* Heading */}
-      <h3 className="text-h3 mb-8" style={{ color: "#232323" }}>
+      <p
+        className="mb-8 text-[28px] md:text-[36px]"
+        style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}
+      >
         what&apos;s led me to here
-      </h3>
+      </p>
 
       {/* Two-column layout */}
       <div className="flex flex-col md:flex-row md:items-start gap-12">
@@ -171,7 +174,7 @@ export default function Bio() {
           {/* Bio paragraphs */}
           <div className="flex flex-col" style={{ gap: 24 }}>
             {PARAGRAPHS.map((segments, pi) => (
-              <p key={pi} className="text-body" style={{ color: "#232323" }}>
+              <p key={pi} style={{ fontSize: 16, lineHeight: 1.6, color: "#363636", fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}>
                 {segments.map((seg, si) =>
                   seg.long ? (
                     <LongSpan
