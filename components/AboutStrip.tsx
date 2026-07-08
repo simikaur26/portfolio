@@ -47,34 +47,31 @@ function AnimatedRow({ label, detail, last, delay }: Row & { delay: number }) {
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
       transition={{ duration: 0.45, ease: "easeOut", delay }}
       style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "baseline",
-        gap: 24,
         borderTop: `1px solid ${BORDER}`,
         borderBottom: last ? `1px solid ${BORDER}` : undefined,
-        padding: "16px 0",
+        padding: "14px 0",
       }}
     >
-      <span style={{
-        fontFamily: HEL,
-        fontSize: 16,
-        fontWeight: 400,
-        color: MUTED,
-        flexShrink: 0,
-        width: 110,
-      }}>
-        {label}
-      </span>
-      <span style={{
-        fontFamily: HEL,
-        fontSize: 16,
-        lineHeight: 1.6,
-        color: SECONDARY,
-        textAlign: "right",
-      }}>
-        {detail}
-      </span>
+      {/* Mobile: stacked. Desktop: space-between */}
+      <div className="flex flex-col md:flex-row md:items-baseline md:justify-between" style={{ gap: 4 }}>
+        <span style={{
+          fontFamily: HEL,
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: "0.04em",
+          color: MUTED,
+        }}>
+          {label}
+        </span>
+        <span style={{
+          fontFamily: HEL,
+          fontSize: 15,
+          lineHeight: 1.6,
+          color: SECONDARY,
+        }}>
+          {detail}
+        </span>
+      </div>
     </motion.div>
   );
 }
@@ -85,10 +82,10 @@ export default function AboutStrip() {
       className="mx-6 min-[480px]:mx-12 md:mx-[220px]"
       style={{ paddingTop: 80, paddingBottom: 120 }}
     >
-      <div style={{ display: "flex", gap: 56, alignItems: "flex-start" }}>
+      <div className="flex flex-col md:flex-row md:items-start" style={{ gap: 48 }}>
 
         {/* Left column */}
-        <div style={{ flex: "0 0 50%", maxWidth: "50%" }}>
+        <div className="w-full md:w-1/2 md:flex-shrink-0">
           <FadeUp delay={0}>
             <p style={{
               fontFamily: HEL,
@@ -104,14 +101,16 @@ export default function AboutStrip() {
             </p>
           </FadeUp>
           <FadeUp delay={0.08}>
-            <p style={{
-              fontFamily: CAN,
-              fontWeight: 300,
-              fontSize: 40,
-              lineHeight: 1.2,
-              color: DARK,
-              margin: 0,
-            }}>
+            <p
+              className="text-[28px] md:text-[40px]"
+              style={{
+                fontFamily: CAN,
+                fontWeight: 300,
+                lineHeight: 1.2,
+                color: DARK,
+                margin: 0,
+              }}
+            >
               There&apos;s more to it than the case studies.
             </p>
           </FadeUp>

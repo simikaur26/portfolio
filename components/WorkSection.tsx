@@ -135,8 +135,7 @@ export default function WorkSection({ exclude }: { exclude?: string }) {
         <p className="text-eyebrow" style={{ color: "#363636" }}>selected work</p>
       )}
       <div
-        className={!exclude ? "mt-8" : ""}
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}
+        className={`grid grid-cols-1 md:grid-cols-2 gap-3 ${!exclude ? "mt-8" : ""}`}
       >
         {cards.map((card) => (
           <WorkTile key={card.href} card={card} />

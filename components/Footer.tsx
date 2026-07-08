@@ -20,7 +20,7 @@ export default function Footer() {
     <footer className="mx-6 min-[480px]:mx-12 md:mx-[220px] py-16">
 
       {/* CTA — two columns */}
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 48 }}>
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-12 md:gap-12">
 
         {/* Left: text */}
         <div>
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
 
         {/* Right: links */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 16, flexShrink: 0 }}>
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 24, flexShrink: 0, flexWrap: "wrap" }}>
           <a
             href="https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing"
             target="_blank"
@@ -104,7 +104,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div
-        className="flex items-center justify-between mt-16 pt-6"
+        className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mt-16 pt-6"
         style={{ borderTop: "1px solid #BBBDBC" }}
       >
         <p style={{ fontFamily: CAN, fontWeight: 300, fontSize: 18, color: "#232323" }}>
