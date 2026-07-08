@@ -53,13 +53,15 @@ function AnimatedRow({ label, detail, last, delay }: Row & { delay: number }) {
       }}
     >
       {/* Mobile: stacked. Desktop: space-between */}
-      <div className="flex flex-col md:flex-row md:items-baseline md:justify-between" style={{ gap: 4 }}>
+      <div className="flex flex-col md:flex-row md:items-baseline" style={{ gap: 4 }}>
         <span style={{
           fontFamily: HEL,
           fontSize: 13,
           fontWeight: 400,
           letterSpacing: "0.04em",
           color: MUTED,
+          flexShrink: 0,
+          width: 120,
         }}>
           {label}
         </span>
