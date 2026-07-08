@@ -1,6 +1,7 @@
 import HomeIntro from "@/components/HomeIntro";
 import WorkSection from "@/components/WorkSection";
 import IndustryScroll from "@/components/IndustryScroll";
+import HorizontalTimeline from "@/components/HorizontalTimeline";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HomeIntro />
       <WorkSection />
       <IndustryScroll />
+      <HorizontalTimeline />
     </main>
   );
 }

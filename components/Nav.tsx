@@ -1,19 +1,29 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const EMAIL = "simikaurb26@gmail.com";
+const HEL = "Helvetica Neue, Helvetica, Arial, sans-serif";
+const CAN = "'CanelaText', serif";
+const MUTED = "#888780";
+const DARK = "#232323";
+const BORDER = "#BBBDBC";
+const BG = "#F2F1F0";
 
-const PILL = {
-  background: "rgba(255, 255, 255, 0.7)",
-  backdropFilter: "blur(16px)",
-  WebkitBackdropFilter: "blur(16px)",
-  border: "1px solid rgba(255, 255, 255, 0.4)",
-  boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)",
+const LINK_STYLE: React.CSSProperties = {
+  fontFamily: HEL,
+  fontSize: 14,
+  fontWeight: 400,
+  color: MUTED,
+  textDecoration: "none",
+  letterSpacing: "0.01em",
+  cursor: "pointer",
+  background: "none",
+  border: "none",
+  padding: 0,
 };
 
 export default function Nav() {
@@ -42,92 +52,147 @@ export default function Nav() {
   };
 
   return (
-    <div
+    <header
       style={{
         position: "fixed",
-        top: 16,
-        left: "50%",
-        transform: "translateX(-50%)",
+        top: 0,
+        left: 0,
+        right: 0,
         zIndex: 100,
-        width: "calc(100% - 32px)",
-        maxWidth: 800,
+        background: BG,
+        borderBottom: `1px solid ${BORDER}`,
       }}
     >
-      {/* Main nav pill */}
+      {/* ── Desktop masthead ──────────────────────────────────────────── */}
       <nav
-        className="flex items-center justify-between gap-4"
-        style={{ ...PILL, padding: "10px 16px", borderRadius: 999, fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif" }}
+        className="hidden md:grid"
+        style={{
+          gridTemplateColumns: "1fr auto 1fr",
+          alignItems: "center",
+          padding: "16px 48px",
+        }}
       >
-        {/* Logo */}
-        <Link href="/" aria-label="Home" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <Image src="/logo.svg" alt="Simi Kaur" width={36} height={30} priority />
-        </Link>
-
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-5">
-          <a href="/" onClick={handleWorkClick} className="text-label-l3 hover:opacity-60 transition-opacity duration-200" style={{ color: "#232323", textDecoration: "none" }}>
+        {/* Left: Work · About */}
+        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          <a href="/" onClick={handleWorkClick} style={LINK_STYLE}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.5")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
             Work
           </a>
-          <Link href="/about" className="text-label-l3 hover:opacity-60 transition-opacity duration-200" style={{ color: "#232323", textDecoration: "none" }}>
-            About Me
+          <Link href="/about" style={LINK_STYLE}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.5")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
+            About
           </Link>
-          <a href="https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-label-l3 hover:opacity-60 transition-opacity duration-200" style={{ color: "#232323", textDecoration: "none" }}>
-            Resume
-          </a>
         </div>
 
-        {/* Desktop contact button */}
-        <button
-          onClick={handleContact}
-          className="hidden md:block"
-          style={{ flexShrink: 0, background: "#232323", border: "none", color: "#ffffff", borderRadius: 999, padding: "6px 16px", cursor: "pointer", transition: "background 200ms ease", fontSize: "15.6px", lineHeight: "19.7px", fontWeight: 400 }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#363636")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#232323")}
+        {/* Center: wordmark */}
+        <Link
+          href="/"
+          style={{
+            fontFamily: CAN,
+            fontWeight: 300,
+            fontSize: 22,
+            color: DARK,
+            textDecoration: "none",
+            letterSpacing: "-0.01em",
+            whiteSpace: "nowrap",
+          }}
         >
-          {copied ? "Copied!" : "Contact"}
-        </button>
+          Simi Kaur
+        </Link>
 
-        {/* Hamburger — mobile only */}
+        {/* Right: Resume · Contact */}
+        <div style={{ display: "flex", gap: 28, alignItems: "center", justifyContent: "flex-end" }}>
+          <a
+            href="https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={LINK_STYLE}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.5")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          >
+            Resume
+          </a>
+          <button
+            onClick={handleContact}
+            style={{
+              ...LINK_STYLE,
+              color: DARK,
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.5")}
+            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+          >
+            {copied ? "Copied!" : "Contact"}
+          </button>
+        </div>
+      </nav>
+
+      {/* ── Mobile bar ────────────────────────────────────────────────── */}
+      <div
+        className="md:hidden flex items-center justify-between"
+        style={{ padding: "14px 24px" }}
+      >
+        <Link
+          href="/"
+          style={{
+            fontFamily: CAN,
+            fontWeight: 300,
+            fontSize: 20,
+            color: DARK,
+            textDecoration: "none",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Simi Kaur
+        </Link>
+
+        {/* Hamburger */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-[5px]"
           onClick={() => setMenuOpen((o) => !o)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          style={{ background: "none", border: "none", cursor: "pointer", padding: 4, flexShrink: 0 }}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex", flexDirection: "column", gap: 5 }}
         >
           <motion.span
             animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }}
             transition={{ duration: 0.2 }}
-            style={{ display: "block", width: 20, height: 1.5, background: "#232323", borderRadius: 2 }}
+            style={{ display: "block", width: 20, height: 1.5, background: DARK }}
           />
           <motion.span
             animate={{ opacity: menuOpen ? 0 : 1 }}
             transition={{ duration: 0.15 }}
-            style={{ display: "block", width: 20, height: 1.5, background: "#232323", borderRadius: 2 }}
+            style={{ display: "block", width: 20, height: 1.5, background: DARK }}
           />
           <motion.span
             animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
             transition={{ duration: 0.2 }}
-            style={{ display: "block", width: 20, height: 1.5, background: "#232323", borderRadius: 2 }}
+            style={{ display: "block", width: 20, height: 1.5, background: DARK }}
           />
         </button>
-      </nav>
+      </div>
 
-      {/* Mobile dropdown */}
+      {/* ── Mobile dropdown ───────────────────────────────────────────── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.97 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="md:hidden mt-2 flex flex-col"
-            style={{ ...PILL, borderRadius: 20, padding: "8px 8px", gap: 2 }}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="md:hidden"
+            style={{
+              background: BG,
+              borderTop: `1px solid ${BORDER}`,
+              padding: "8px 0 16px",
+            }}
           >
             {[
               { label: "Work", onClick: handleWorkClick, href: "/" },
-              { label: "About Me", href: "/about" },
+              { label: "About", href: "/about" },
               { label: "Resume", href: "https://drive.google.com/file/d/1s7qIxAlOYw4lTuTG57niGC7dLePus8zf/view?usp=sharing", external: true },
-            ].map(({ label, href, onClick, external }) => (
+            ].map(({ label, href, onClick, external }) =>
               external ? (
                 <a
                   key={label}
@@ -135,7 +200,7 @@ export default function Nav() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
-                  style={{ display: "block", padding: "12px 16px", fontSize: 15.6, color: "#232323", textDecoration: "none", borderRadius: 12 }}
+                  style={{ display: "block", padding: "12px 24px", fontFamily: HEL, fontSize: 15, color: MUTED, textDecoration: "none" }}
                 >
                   {label}
                 </a>
@@ -144,7 +209,7 @@ export default function Nav() {
                   key={label}
                   href={href}
                   onClick={onClick}
-                  style={{ display: "block", padding: "12px 16px", fontSize: 15.6, color: "#232323", textDecoration: "none", borderRadius: 12 }}
+                  style={{ display: "block", padding: "12px 24px", fontFamily: HEL, fontSize: 15, color: MUTED, textDecoration: "none" }}
                 >
                   {label}
                 </a>
@@ -153,22 +218,22 @@ export default function Nav() {
                   key={label}
                   href={href!}
                   onClick={() => setMenuOpen(false)}
-                  style={{ display: "block", padding: "12px 16px", fontSize: 15.6, color: "#232323", textDecoration: "none", borderRadius: 12 }}
+                  style={{ display: "block", padding: "12px 24px", fontFamily: HEL, fontSize: 15, color: MUTED, textDecoration: "none" }}
                 >
                   {label}
                 </Link>
               )
-            ))}
-            <div style={{ height: 1, background: "#BBBDBC", margin: "4px 16px" }} />
+            )}
+            <div style={{ height: 1, background: BORDER, margin: "8px 24px" }} />
             <button
               onClick={handleContact}
-              style={{ display: "block", textAlign: "left", padding: "12px 16px", fontSize: 15.6, color: "#232323", background: "none", border: "none", cursor: "pointer", borderRadius: 12 }}
+              style={{ display: "block", width: "100%", textAlign: "left", padding: "12px 24px", fontFamily: HEL, fontSize: 15, color: DARK, background: "none", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "3px" }}
             >
-              {copied ? "Copied!" : "Copy email"}
+              {copied ? "Copied!" : "Contact"}
             </button>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 }

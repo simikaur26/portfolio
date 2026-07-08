@@ -39,7 +39,7 @@ html {
 */
 :root {
   --case-accent: var(--color-primary);
-  --nav-height: 82px;
+  --nav-height: 88px;
   --color-navy: #1B2D4F;
   --color-blue: #6494CE;
   --color-acorns: #6EC739;
@@ -161,3 +161,4 @@ body {
   background-color: var(--color-bg);
   color: var(--color-primary);
 }
+

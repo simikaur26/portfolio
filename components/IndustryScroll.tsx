@@ -27,7 +27,7 @@ export default function IndustryScroll() {
 
   const { scrollYProgress } = useScroll({
     target: outerRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {

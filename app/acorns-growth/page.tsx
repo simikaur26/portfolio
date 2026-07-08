@@ -241,8 +241,8 @@ export default function AcornsGrowth() {
             </div>
 
             <ResultCallout
-              headline="Results pending."
-              detail="Confirming with my former manager."
+              headline="Banner, direct copy performed best."
+              detail="Reminder variants averaged only a slight lift over no reminder at all, roughly 51% vs. 46%, but the direct-copy banner alone beat baseline by 13 points. UI treatment plus tone mattered more than the reminder existing at all."
             />
 
           </div>
