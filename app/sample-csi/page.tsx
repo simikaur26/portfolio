@@ -5,9 +5,6 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
 import CaseImage from "@/components/CaseImage";
-import SectionHeader from "@/components/SectionHeader";
-import QuoteCluster from "@/components/QuoteCluster";
-import Button from "@/components/Button";
 import TwoUp from "@/components/TwoUp";
 import ThreeUp from "@/components/ThreeUp";
 import FigmaEmbed from "@/components/FigmaEmbed";
@@ -19,6 +16,25 @@ const TOOLS = [
   { name: "Claude Code", src: "/claude.svg" },
   { name: "Granola",     src: "/granola.svg" },
 ];
+
+const NAVY = "#1B2D4F";
+
+function FadeUp({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      ref={ref}
+      style={style}
+      initial={reduced ? false : { opacity: 0, y: 16 }}
+      animate={inView || reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: reduced ? 0 : delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 const CARD_STYLE = {
   background: "#FFFFFF",
@@ -36,9 +52,7 @@ export default function SampleCSI() {
   const cardsInView = useInView(cardsRef, { once: true, margin: "-50px" });
   const tldrRef     = useRef<HTMLDivElement>(null);
   const tldrInView  = useInView(tldrRef, { once: true, margin: "-50px" });
-  const problemHeaderRef    = useRef<HTMLDivElement>(null);
-  const problemHeaderInView = useInView(problemHeaderRef, { once: true, margin: "-50px" });
-  const prefersReducedMotion = useReducedMotion();
+const prefersReducedMotion = useReducedMotion();
 
   const cardAnim = (inView: boolean, delay: number) => ({
     initial: prefersReducedMotion ? false : { opacity: 0, y: 20 },
@@ -188,82 +202,194 @@ export default function SampleCSI() {
 
       {/* ── The Problem ───────────────────────────────────────────────────── */}
       <div id="the-problem" className="mx-6 min-[480px]:mx-12 md:mx-[220px] mt-20 scroll-mt-[50px]">
-        <motion.div
-          ref={problemHeaderRef}
-          {...(prefersReducedMotion ? {} : {
-            initial: { opacity: 0, y: 20 },
-            animate: problemHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-            transition: { duration: 0.5, ease: "easeOut" },
-          })}
-          className="flex flex-col md:flex-row gap-6 md:gap-12"
-        >
+
+        {/* Numbered eyebrow */}
+        <FadeUp delay={0}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+            <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>01</span>
+            <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+            <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>The Problem</span>
+          </div>
+        </FadeUp>
+
+        {/* Two-column layout */}
+        <div className="flex flex-col md:flex-row gap-6 md:gap-12">
           <div style={{ flex: 1 }}>
-            <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>The Problem</p>
-            <p
-              className="text-[26px] md:text-[36px]"
-              style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323", marginTop: 12 }}
-            >
-              The problem wasn&apos;t digitizing paperwork. It was preserving trust.
-            </p>
+            <FadeUp delay={0.08}>
+              <p
+                className="text-[26px] md:text-[36px]"
+                style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}
+              >
+                The problem wasn&apos;t digitizing paperwork. It was preserving trust.
+              </p>
+            </FadeUp>
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
-              Early in our research, we learned that evidence collection is messy, high-pressure, and inconsistent between agencies. Officers were documenting information across notebooks, spreadsheets, photos, and disconnected systems. Small mistakes — like missing timestamps or unclear chain-of-custody records — could create serious issues later.
-            </p>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
-              At first, we thought the challenge was mostly about efficiency. But interviews and artifact analysis shifted our perspective. The real problem was reliability under pressure — officers weren&apos;t just filling out forms. They were trying to build credible narratives from chaotic scenes.
-            </p>
+            <FadeUp delay={0.16}>
+              <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
+                Early in our research, we learned that evidence collection is messy, high-pressure, and inconsistent between agencies. Officers were documenting information across notebooks, spreadsheets, photos, and disconnected systems. Small mistakes — like missing timestamps or unclear chain-of-custody records — could create serious issues later.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.24}>
+              <p style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
+                At first, we thought the challenge was mostly about efficiency. But interviews and artifact analysis shifted our perspective. The real problem was reliability under pressure — officers weren&apos;t just filling out forms. They were trying to build credible narratives from chaotic scenes.
+              </p>
+            </FadeUp>
           </div>
-        </motion.div>
+        </div>
 
+        {/* Quote cards */}
         <div style={{ marginTop: 48 }}>
-          <QuoteCluster />
+          <FadeUp delay={0.32}>
+            <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "#888780", marginBottom: 16 }}>
+              From officer interviews
+            </p>
+          </FadeUp>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 16, alignItems: "stretch" }}>
+            {[
+              "We need to document and secure evidence in a way that maintains chain of custody from the moment we collect it.",
+              "Chain of custody is critically important. If it's broken at any point, the evidence may not be admissible in court.",
+              "Your notes are only as good as the person writing them. If you miss something at the scene, there's no going back.",
+            ].map((quote, i) => (
+              <FadeUp key={i} delay={0.40 + i * 0.1} style={{ height: "100%" }}>
+                <div style={{
+                  height: "100%",
+                  background: "#F7F6F5",
+                  border: "1px solid #BBBDBC",
+                  borderLeft: `2.5px solid ${NAVY}`,
+                  borderRadius: 8,
+                  padding: "20px 20px 20px 18px",
+                  boxSizing: "border-box",
+                }}>
+                  <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontStyle: "italic", fontSize: 16, lineHeight: 1.55, color: "#232323", margin: 0 }}>
+                    &ldquo;{quote}&rdquo;
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
 
-        {/* Design challenge pull quote */}
-        <div style={{ marginTop: 64, textAlign: "center" }}>
-          <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>The Design Challenge</p>
-          <p
-            className="text-[22px] md:text-[28px]"
-            style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontStyle: "italic", lineHeight: 1.4, color: "#232323", maxWidth: 640, margin: "16px auto 0" }}
-          >
-            How do we help officers document reliably under pressure without slowing them down?
-          </p>
-        </div>
+        {/* Design challenge */}
+        <div style={{ marginTop: 80 }}>
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>02</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>The Design Challenge</span>
+            </div>
+          </FadeUp>
 
-        <div className="mt-12 flex justify-center">
-          <Button href="#final-outcome">Jump to the solution</Button>
+          <FadeUp delay={0.08}>
+            <p
+              className="text-[22px] md:text-[28px]"
+              style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontStyle: "italic", lineHeight: 1.4, color: "#232323", maxWidth: 560, marginBottom: 32 }}
+            >
+              How do we help officers document reliably under pressure without slowing them down?
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 24 }}>
+            {[
+              "Preserve chain-of-custody integrity at every step",
+              "Work fast enough to not slow officers down in the field",
+              "Build records reliable enough to hold up if challenged later",
+            ].map((text, i) => (
+              <FadeUp key={text} delay={0.16 + i * 0.1}>
+                <div style={{ borderTop: `2px solid ${NAVY}`, paddingTop: 14 }}>
+                  <p style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 15, lineHeight: 1.6, color: "#363636" }}>
+                    {text}
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          <FadeUp delay={0.46}>
+            <div style={{ marginTop: 40 }}>
+              <a
+                href="#final-outcome"
+                style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 15, color: "#232323", textDecoration: "underline", textUnderlineOffset: "3px" }}
+              >
+                Jump to the solution →
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </div>
 
-      <main className="mx-6 min-[480px]:mx-12 md:mx-[220px] pt-20">
+      <main className="mx-6 min-[480px]:mx-12 md:mx-[220px]">
 
         {/* CONSTRAINTS */}
         <div id="constraints" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Constraints" heading="Designing for inconsistency became the hardest constraint." canela />
-          <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
-            One of the biggest challenges was realizing there wasn&apos;t a single workflow to design around. Different agencies documented evidence differently, used different terminology, and prioritized different information. We explored more standardized flows, but the more artifacts we reviewed, the more limiting that approach felt. So we made a different tradeoff: build a system that felt flexible without losing structure.
-          </p>
-          <p className="mt-6" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636", fontWeight: 500 }}>
-            That led to four core features:
-          </p>
-          <TwoUp
-            images={[
-              { src: "/sample-csi/constraints1.svg", alt: "Dynamic forms that adapted based on evidence type", width: 435, height: 333, caption: "Dynamic forms that adapted based on evidence type", captionStyle: "body" },
-              { src: "/sample-csi/constraints2.svg", alt: "Custom fields for agency-specific workflows", width: 435, height: 333, caption: "Custom fields for agency-specific workflows", captionStyle: "body" },
-            ]}
-          />
-          <TwoUp
-            images={[
-              { src: "/sample-csi/constraints3.svg", alt: "Progressive disclosure to reduce cognitive overload in the field", width: 435, height: 333, caption: "Progressive disclosure to reduce cognitive overload in the field", captionStyle: "body" },
-              { src: "/sample-csi/constraints4.svg", alt: "AI-assisted prompts that helped officers avoid missing critical details", width: 435, height: 333, caption: "AI-assisted prompts that helped officers avoid missing critical details", captionStyle: "body" },
-            ]}
-          />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>03</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Constraints</span>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Designing for inconsistency became the hardest constraint.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.16}>
+            <div className="mt-8" style={{ borderLeft: `2.5px solid ${NAVY}`, paddingLeft: 16, display: "flex", flexDirection: "column", gap: 6 }}>
+              <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY, fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontWeight: 400, margin: 0 }}>The Tradeoff</p>
+              <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 19, lineHeight: 1.3, color: "#232323", margin: 0 }}>
+                A system flexible enough to handle inconsistency, without losing structure.
+              </p>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.24}>
+            <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
+              There wasn&apos;t a single workflow to design around. Different agencies documented evidence differently, used different terminology, and prioritized different information. Standardized flows kept getting more limiting the more artifacts we reviewed.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.32}>
+            <p className="mt-6" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636", fontWeight: 500 }}>
+              That led to four core features:
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.40}>
+            <TwoUp
+              images={[
+                { src: "/sample-csi/constraints1.svg", alt: "Dynamic forms that adapted based on evidence type", width: 435, height: 333, caption: "Dynamic forms that adapted based on evidence type", captionStyle: "body" },
+                { src: "/sample-csi/constraints2.svg", alt: "Custom fields for agency-specific workflows", width: 435, height: 333, caption: "Custom fields for agency-specific workflows", captionStyle: "body" },
+              ]}
+            />
+          </FadeUp>
+
+          <FadeUp delay={0.50}>
+            <TwoUp
+              images={[
+                { src: "/sample-csi/constraints3.svg", alt: "Progressive disclosure to reduce cognitive overload in the field", width: 435, height: 333, caption: "Progressive disclosure to reduce cognitive overload in the field", captionStyle: "body" },
+                { src: "/sample-csi/constraints4.svg", alt: "AI-assisted prompts that helped officers avoid missing critical details", width: 435, height: 333, caption: "AI-assisted prompts that helped officers avoid missing critical details", captionStyle: "body" },
+              ]}
+            />
+          </FadeUp>
         </div>
 
         {/* KEY DESIGN DECISION 1 */}
         <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 1" heading="AI as guardrails, not automation." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>04</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              AI as guardrails, not automation.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             As we learned more about evidence collection workflows, we kept running into the same issue: officers needed to document information quickly, but missing even a small detail could create problems later. We explored more automated documentation flows early on, but the deeper we got into the problem space, the less comfortable full automation felt. In a workflow built around accountability and chain of custody, fully AI-generated reports felt more likely to create distrust than confidence.
           </p>
@@ -293,7 +419,18 @@ export default function SampleCSI() {
 
         {/* KEY DESIGN DECISION 2 */}
         <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 2" heading="The biggest pivot came from something we didn't hear in interviews." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>05</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              The biggest pivot came from something we didn&apos;t hear in interviews.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             One of our most important insights came late in the process. During synthesis, we realized evidence rarely exists in isolation — a blood sample connects to a weapon, a fingerprint to a broken object. None of our interviews explicitly revealed this; we uncovered it through artifact analysis and workflow mapping. Once we saw the pattern, we redesigned the case summary experience to support parent-child evidence relationships. We explored several directions:
           </p>
@@ -317,7 +454,18 @@ export default function SampleCSI() {
 
         {/* KEY DESIGN DECISION 3 */}
         <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 3" heading="Usability testing exposed where clarity mattered more than features." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>06</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Usability testing exposed where clarity mattered more than features.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             There was one recurring issue that came up in usability testing: language. Terms that felt obvious to us weren&apos;t obvious to officers. We made a series of targeted refinements that improved comprehension and flow. One participant summed it up well: &apos;This would make our work faster.&apos;
           </p>
@@ -362,15 +510,18 @@ export default function SampleCSI() {
 
         {/* FINAL OUTCOME */}
         <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
-          <div style={{ textAlign: "center" }}>
-            <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>Final Outcome</p>
-            <p
-              className="text-[22px] md:text-[28px]"
-              style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.4, color: "#232323", maxWidth: 640, margin: "16px auto 0" }}
-            >
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>07</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Final Outcome</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
               The final system balanced structure with flexibility.
             </p>
-          </div>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             While SampleCSI isn&apos;t live yet due to funding limitations, usability participants consistently described the system as faster and easier to navigate than current documentation processes.
           </p>
@@ -387,7 +538,18 @@ export default function SampleCSI() {
 
         {/* USING AI */}
         <div id="using-ai" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Using AI" heading="AI also became part of how we built SampleCSI." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>08</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Using AI</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              AI also became part of how we built SampleCSI.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             There was something a little meta about this project: we were designing an AI-assisted tool while actively using AI tools ourselves. That wasn&apos;t the original plan, but it became one of the more interesting parts of the process.
           </p>
@@ -448,7 +610,18 @@ export default function SampleCSI() {
 
         {/* REFLECTION */}
         <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Reflection" heading="I learned that workflow design isn't really about screens." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 12, fontWeight: 400, color: NAVY, letterSpacing: "0.06em" }}>09</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif", fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Reflection</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              I learned that workflow design isn&apos;t really about screens.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             It&apos;s about understanding how people make decisions under pressure. If I revisited this project, I&apos;d spend more time validating edge cases earlier, especially around evidence relationships and multi-agency workflows. Our biggest pivot happened relatively late, and earlier questioning could have surfaced it sooner. This project also changed how I think about usability testing — watching users hesitate in real time taught me that clarity often matters more than feature depth, especially in high-stakes environments where confidence and speed are tightly connected.
           </p>

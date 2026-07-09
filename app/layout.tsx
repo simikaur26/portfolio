@@ -27,7 +27,7 @@ export default function RootLayout({
         <GlobalCursor />
         <ScrollToTop />
         <Nav />
-        <div className="flex-1" style={{ paddingTop: 88 }}>
+        <div className="flex-1" style={{ paddingTop: 56 }}>
           {children}
         </div>
         <Footer />

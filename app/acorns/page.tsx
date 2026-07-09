@@ -4,8 +4,6 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import CaseImage from "@/components/CaseImage";
-import SectionHeader from "@/components/SectionHeader";
-import Button from "@/components/Button";
 import GroupedPoints from "@/components/GroupedPoints";
 import FeatureScreenshot from "@/components/FeatureScreenshot";
 import TwoUp from "@/components/TwoUp";
@@ -15,6 +13,26 @@ const TOOLS = [
   { name: "Figma",  src: "/figma.svg" },
   { name: "Gemini", src: "/gemini.svg" },
 ];
+
+const GREEN = "#6EC739";
+const HEL = "Helvetica Neue, Helvetica, Arial, sans-serif";
+const CAN = "'CanelaText', serif";
+
+function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      ref={ref}
+      initial={reduced ? false : { opacity: 0, y: 16 }}
+      animate={inView || reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: reduced ? 0 : delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 const CARD_STYLE = {
   background: "#FFFFFF",
@@ -193,10 +211,14 @@ export default function Acorns() {
           className="flex flex-col md:flex-row gap-6 md:gap-12"
         >
           <div style={{ flex: 1 }}>
-            <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>The Problem</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>01</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>The Problem</span>
+            </div>
             <p
               className="text-[26px] md:text-[36px]"
-              style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.25, color: "#232323", marginTop: 12 }}
+              style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}
             >
               The real problem wasn&apos;t document upload. It was uncertainty.
             </p>
@@ -215,27 +237,49 @@ export default function Acorns() {
         <CaseImage src="/acorns/problem2.svg" alt="Support contact volume from suspension issues" width={930} height={400} />
         <CaseImage src="/acorns/problem3.svg" alt="Customer journey during suspension" width={930} height={400} />
 
-        {/* Design challenge pull quote */}
-        <div style={{ marginTop: 64, textAlign: "center" }}>
-          <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>The Design Challenge</p>
-          <p
-            className="text-[22px] md:text-[28px]"
-            style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontStyle: "italic", lineHeight: 1.4, color: "#232323", maxWidth: 640, margin: "16px auto 0" }}
-          >
-            How do we make this process feel clearer and more trustworthy without weakening fraud and compliance protections?
-          </p>
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <Button href="#final-outcome">Jump to the solution</Button>
+        {/* Design challenge */}
+        <div style={{ marginTop: 80 }}>
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>02</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>The Design Challenge</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p
+              className="text-[22px] md:text-[28px]"
+              style={{ fontFamily: CAN, fontWeight: 300, fontStyle: "italic", lineHeight: 1.4, color: "#232323", maxWidth: 640 }}
+            >
+              How do we make this process feel clearer and more trustworthy without weakening fraud and compliance protections?
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.16}>
+            <div style={{ marginTop: 40 }}>
+              <a href="#final-outcome" style={{ fontFamily: HEL, fontSize: 15, color: "#232323", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+                Jump to the solution →
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </div>
 
-      <main className="mx-6 min-[480px]:mx-12 md:mx-[220px] pt-20">
+      <main className="mx-6 min-[480px]:mx-12 md:mx-[220px]">
 
         {/* CONSTRAINTS */}
         <div id="constraints" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Constraints" heading="Making complexity feel simple." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>03</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Constraints</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Making complexity feel simple.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             Different suspension types needed different combinations of IDs, bank statements, written explanations, acknowledgements, and manual review. But the old uploader flattened all of those into the same generic experience. The challenge was reducing confusion for customers without oversimplifying the compliance complexity behind the scenes.
           </p>
@@ -243,7 +287,18 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 1 */}
         <div id="key-design-decision-1" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 1" heading="Replace the generic uploader with a guided experience." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>04</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Replace the generic uploader with a guided experience.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             The first big shift was moving away from a static uploader toward a more dynamic flow. Instead of showing every customer the same upload screen, the experience adapted based on suspension type.
           </p>
@@ -304,7 +359,18 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 2 */}
         <div id="key-design-decision-2" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 2" heading="Progressive disclosure helped reduce anxiety." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>05</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Progressive disclosure helped reduce anxiety.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             Early versions surfaced every requirement immediately: upload documents, explain transactions, acknowledge terms, wait for review. It technically worked, but it felt stressful. So I started exploring a step-by-step flow that guided customers through one task at a time. Instead of presenting a wall of requirements, the experience focused on the next thing the customer needed to do.
           </p>
@@ -335,7 +401,18 @@ export default function Acorns() {
 
         {/* KEY DESIGN DECISION 3 */}
         <div id="key-design-decision-3" className="mt-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Key design decision 3" heading="Account access, even during suspension." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>06</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Key Design Decision</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              Account access, even during suspension.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             One insight kept coming up while working through the flows: customers were panicking because they couldn&apos;t see their money. The original experience basically hard-locked users out of the product. But that made the situation feel even more alarming. So instead of fully blocking access, I designed a read-only account state. Customers could still:
           </p>
@@ -372,15 +449,18 @@ export default function Acorns() {
 
         {/* FINAL OUTCOME */}
         <div id="final-outcome" className="mt-20 scroll-mt-[50px]">
-          <div style={{ textAlign: "center" }}>
-            <p style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, fontSize: 16, color: "#A1A1A1" }}>Final Outcome</p>
-            <p
-              className="text-[22px] md:text-[28px]"
-              style={{ fontFamily: "'CanelaText', serif", fontWeight: 300, lineHeight: 1.4, color: "#232323", maxWidth: 640, margin: "16px auto 0" }}
-            >
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>07</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Final Outcome</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
               The final experience turned a black-box process into a guided recovery flow.
             </p>
-          </div>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             The final experience replaced the generic uploader with a guided flow that adapted based on suspension type, surfaced progress more clearly, and gave customers more visibility throughout review. It also created a scalable foundation for future verification and support experiences across Acorns. Most importantly, the experience felt more human — instead of leaving customers in the dark during a stressful moment, the flow gave them context, progress, and reassurance.
           </p>
@@ -392,7 +472,18 @@ export default function Acorns() {
 
         {/* REFLECTION */}
         <div id="reflection" className="mt-20 mb-20 scroll-mt-[50px]">
-          <SectionHeader eyebrow="Reflection" heading="I learned that trust breaks fast when users lose visibility." canela />
+          <FadeUp delay={0}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <span style={{ fontFamily: HEL, fontSize: 12, fontWeight: 400, color: GREEN, letterSpacing: "0.06em" }}>08</span>
+              <span style={{ width: 1, height: 12, background: "#BBBDBC", display: "inline-block" }} />
+              <span style={{ fontFamily: HEL, fontSize: 11, fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#888780" }}>Reflection</span>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.08}>
+            <p className="text-[26px] md:text-[36px]" style={{ fontFamily: CAN, fontWeight: 300, lineHeight: 1.25, color: "#232323" }}>
+              I learned that trust breaks fast when users lose visibility.
+            </p>
+          </FadeUp>
           <p className="mt-8" style={{ fontSize: 16, lineHeight: 1.6, color: "#363636" }}>
             This project changed how I think about high-stress financial workflows. At first, I approached it like a form redesign problem. But the deeper issue was emotional. Customers needed clarity and reassurance just as much as they needed functionality. The biggest lesson was realizing that reducing friction doesn&apos;t always mean removing steps — sometimes it just means helping people understand where they are, what&apos;s happening, and what comes next. If I revisited the project, I&apos;d spend more time testing how different suspension types changed pacing and trust needs across the flow.
           </p>

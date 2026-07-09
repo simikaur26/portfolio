@@ -39,7 +39,7 @@ html {
 */
 :root {
   --case-accent: var(--color-primary);
-  --nav-height: 88px;
+  --nav-height: 56px;
   --color-navy: #1B2D4F;
   --color-blue: #6494CE;
   --color-acorns: #6EC739;
