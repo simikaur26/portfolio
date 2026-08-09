@@ -12,6 +12,12 @@ const CARDS = [
     href: "/compare-formulas",
   },
   {
+    company: "Stellantis × Mcity",
+    heading: "Take control: Designing an L3 autonomous handoff alert",
+    videoSrc: "/homepage/stellantis-home.mp4",
+    href: "/stellantis",
+  },
+  {
     company: "Acorns",
     heading: "Building Trust during Customer Suspensions at Acorns",
     videoSrc: "/homepage/acorns-home.mp4",
@@ -57,22 +63,37 @@ function WorkTile({ card }: { card: Card }) {
       }}
     >
       {card.videoSrc && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: card.videoPosition ?? "center center",
-          }}
-        >
-          <source src={card.videoSrc} type="video/mp4" />
-        </video>
+        card.videoSrc.endsWith(".jpg") || card.videoSrc.endsWith(".png") ? (
+          <img
+            src={card.videoSrc}
+            alt={card.heading}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: card.videoPosition ?? "center center",
+            }}
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: card.videoPosition ?? "center center",
+            }}
+          >
+            <source src={card.videoSrc} type="video/mp4" />
+          </video>
+        )
       )}
 
       {/* Dark overlay */}
