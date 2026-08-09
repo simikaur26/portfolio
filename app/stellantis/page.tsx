@@ -149,18 +149,18 @@ const DECISIONS = [
     title: "Red overlay + blur",
     body: "The whole display darkens and reddens so the alert isn't a thing on screen, it's the only thing on screen.",
     tries: [
-      "Solid black overlay — too abrupt, felt like a crash, not a warning",
-      "Red border flash only — didn't read as urgent enough",
+      "Red overlay on the left and right — too abrupt, felt like a crash, not a warning",
+      "overlay towards the bottom of the cluster — didn't read as urgent enough",
     ],
-    shipped: "Darkening the whole screen and tinting it red gave the alert visual weight in the cluster's fixed grid.",
+    shipped: "tinting the center red gave the alert visual weight in the cluster's fixed grid.",
   },
   {
     n: "02",
     title: "Two words, not a paragraph",
     body: '"Take control." No explanation. A wheel icon with hands going back on it says the rest.',
     tries: [
-      "Full explanation of what happened — too much to read in time",
-      "Icon only, no text — testers didn't know what to do",
+      "Icon and mutliline explanation — too much to read in time",
+      "played around with icons — it looked too busy",
     ],
     shipped: "Two words are fast to read and the icon tells the action—no ambiguity when a driver's attention is already split.",
   },
@@ -783,7 +783,7 @@ function DecisionBlock({
   };
 
   return (
-    <div style={{ marginBottom: "clamp(56px, 8vw, 96px)" }}>
+    <div style={{ marginBottom: "clamp(32px, 5vw, 56px)" }}>
       {/* Decision text block */}
       <div style={{ marginBottom: 32 }}>
         <div
@@ -890,7 +890,7 @@ function DecisionBlock({
       </div>
 
       {/* Caption */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 8 }}>
         <div
           style={{
             fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
@@ -926,6 +926,7 @@ function DecisionBlock({
         style={{
           width: "100%",
           aspectRatio: "4 / 3",
+          maxHeight: "400px",
           borderRadius: "12px",
           overflow: "hidden",
           cursor: activeTab !== "shipped" ? "pointer" : "default",
@@ -1095,32 +1096,6 @@ export default function StellantisCaseStudy() {
         * { box-sizing: border-box; }
       `}</style>
 
-      {/* Nav */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "20px clamp(20px, 6vw, 64px)",
-          borderBottom: `1px solid ${tokens.surfaceLine}`,
-        }}
-      >
-        <div style={{ fontFamily: "'CanelaText', serif", fontSize: 16, letterSpacing: "0.02em" }}>
-          Simi Kaur
-        </div>
-        <a
-          href="/#work"
-          style={{
-            fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-            fontSize: 12,
-            color: tokens.muted,
-            letterSpacing: "0.08em",
-            textDecoration: "none",
-          }}
-        >
-          ← BACK TO WORK
-        </a>
-      </div>
 
       {/* Hero */}
       <div
@@ -1316,7 +1291,7 @@ export default function StellantisCaseStudy() {
         style={{
           maxWidth: 1080,
           margin: "0 auto",
-          padding: "clamp(56px, 8vw, 96px) clamp(20px, 6vw, 64px)",
+          padding: "clamp(24px, 4vw, 48px) clamp(20px, 6vw, 64px)",
         }}
       >
         <Eyebrow n="04">The final outcome</Eyebrow>
@@ -1374,7 +1349,7 @@ export default function StellantisCaseStudy() {
             marginBottom: 0,
           }}
         >
-          The instrument cluster cycles through normal driving (green accent) and transitions into alert state (full red overlay, two-word directive, audio chime) when a handoff is required.
+          Cluster transitions into alert state (full red overlay, two-word directive, audio chime, and flashing) when a handoff is required.
         </p>
       </div>
 
